@@ -4,6 +4,7 @@ import './App.css';
 import Editor from './Editor'
 
 class App extends Component {
+
   constructor(){
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,6 +17,7 @@ class App extends Component {
   isAnonymous(){
     return true;
   }
+
   render() {
     return (
       <div className="App">
