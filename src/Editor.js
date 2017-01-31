@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import './Editor.css';
 import Profile from './Profile';
+import Article from './Article'
 
 class Editor extends Component {
   constructor(props){
@@ -48,7 +49,11 @@ class Editor extends Component {
     else return false;
   }
   handleSubmit(event){
-    this.props.submit();
+    let article = Object.assign({}, Article());
+    article.user = "Genji";
+    article.content = this.state.content;
+    article.urls[0].url = this.state.embedlyUrl;
+    this.props.submit(article);
   }
   detectURL(text){
     var urls = text.match(/(https?:\/\/[^\s]+)/g)||text.match(/(www.[^\s]+)/g);
