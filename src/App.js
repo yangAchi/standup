@@ -10,6 +10,9 @@ class App extends Component {
     super();
     this.dao = new FirebaseDao(config);
     this.submit = this.submit.bind(this);
+    this.state = {
+    articles:[]
+    }
   }
 
   submit(article){
@@ -44,13 +47,24 @@ class App extends Component {
   componentWillUnmount(){
     this.dao.off();
   }
+  getArticles(){
+    let lis = [];
+    for(let i=0;i<this.state.articles.length;i++){
+      lis.push(<li key={this.state.articles[i].key}>{this.state.articles[i].content}</li>);
+    }
+    return lis;
+  }
+  
   render() {
     return (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </div>
-        <Editor {...this}/>
+        <Editor submit={this.submit} isAnonymous={this.isAnonymous}/>
+          <ul>
+          {this.getArticles()}
+          </ul>
       </div>
     );
   }
