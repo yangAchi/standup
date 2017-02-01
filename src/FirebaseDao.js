@@ -31,6 +31,10 @@ export default class FirebaseDao {
   newKey(){
     return firebase.database().ref().child('posts').push().key;
   }
+  list(pagesize){
+    return firebase.database().ref('/posts/')
+            .orderByKey().limitToLast(pagesize);
+  }
   //한개의 글을 얻어 온다.
   getArticle(key){
     return firebase.database().ref('/posts/' + key);

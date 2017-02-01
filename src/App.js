@@ -1,32 +1,15 @@
 import React, { Component } from 'react';
 import logo from './stand_up_logo.png';
 import './App.css';
-import Editor from './Editor';
+import Editor from './Editor'
 import FirebaseDao from './FirebaseDao';
-import * as firebase from 'firebase';
-
-/*
-* App Component
-*/
-
-var config = {
-    apiKey: "AIzaSyCtcnPAt0yNRnoHoYa7wP7GmPX96TePzgk",
-    authDomain: "standup-3e243.firebaseapp.com",
-    databaseURL: "https://standup-3e243.firebaseio.com",
-    storageBucket: "standup-3e243.appspot.com",
-    messagingSenderId: "63317005145"
-  };
-firebase.initializeApp(config);
+import config from './config';
 
 class App extends Component {
   constructor(){
     super();
     this.dao = new FirebaseDao(config);
     this.submit = this.submit.bind(this);
-    this.getArticles = this.getArticles.bind(this);
-    this.state = {
-      articles:[]
-    }
   }
 
   submit(article){
@@ -39,14 +22,6 @@ class App extends Component {
 
   isAnonymous(){
     return true;
-  }
-
-  getArticles(){
-    let lis = [];
-    for(let i=0;i<this.state.articles.length;i++){
-      lis.push(<li key={this.state.articles[i].key}>{this.state.articles[i].content}</li>);
-    }
-    return lis;
   }
 
   componentWillMount() {
@@ -69,21 +44,16 @@ class App extends Component {
   componentWillUnmount(){
     this.dao.off();
   }
-
   render() {
     return (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
         </div>
-        <Editor handleSubmit={this.submit} isAnonymous={this.isAnonymous}/>
-        <ul>
-        {this.getArticles()}
-        </ul>
+        <Editor {...this}/>
       </div>
     );
   }
 }
-
 
 export default App;
