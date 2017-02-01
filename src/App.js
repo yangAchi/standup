@@ -4,6 +4,7 @@ import './App.css';
 import Editor from './Editor'
 import FirebaseDao from './FirebaseDao';
 import config from './config';
+import CardList from './CardList'
 
 class App extends Component {
   constructor(){
@@ -62,9 +63,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </div>
         <Editor submit={this.submit} isAnonymous={this.isAnonymous}/>
-          <ul>
-          {this.getArticles()}
-          </ul>
+          <CardList articles={this.state.articles}/>
       </div>
     );
   }
