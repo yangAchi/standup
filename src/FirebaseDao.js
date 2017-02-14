@@ -1,42 +1,69 @@
-﻿import firebase from 'firebase';
+/*global firebaseui,firebase*/
 /*
 *  initializeFirebaseApp
 */
+import firebase from 'firebase';
+import firebaseui from 'firebaseui';
 
 export default class FirebaseDao {
   constructor(config){
-    firebase.initializeApp(config);
+    if(firebase.apps&&firebase.apps.length>0){
+      this.firebaseApp = firebase.apps[0];
+    }else{
+      this.firebaseApp = firebase.initializeApp(config);
+    }
   }
-  //더 이상 입력에 사용하지 않습니다.
+  getFirebaseApp(){
+    return this.firebaseApp;
+  }
+
   insert(postData){
     return firebase.database().ref().child('posts').push(postData);
   }
-  // 수정
   update(key,postData){
     var updates = {};
     updates['/posts/' + key] = postData;
     updates['/user-posts/genji/' + key] = postData;
     return firebase.database().ref().update(updates);
   }
-  // 삭제, delete는 예약어 이므로 remove를 사용
   remove(key){
-    firebase.database().ref('/posts/').child(key).remove();
-    return firebase.database().ref('/user-posts/genji/').child(key).remove();
+    return new Promise(resolve=>{
+      firebase.database().ref('/posts/').child(key).remove();
+      firebase.database().ref('/user-posts/genji/').child(key).remove();
+      resolve(key);
+    });
   }
-  //database에 걸린 이벤트를 종료
   off(){
     return firebase.database().ref().off();
   }
-  //새로 빈 데이터를 만들고 key값만 return
   newKey(){
     return firebase.database().ref().child('posts').push().key;
   }
-  list(pagesize){
-    return firebase.database().ref('/posts/')
-            .orderByKey().limitToLast(pagesize);
+  /**
+  * Promise를 호출하게 되면 이벤트가 등록된 부분이 사라기제 된다.
+  */
+  list(pagesize,callback){
+    // return new Promise(resolve=>{
+      firebase.database().ref('posts')
+              .orderByKey().limitToLast(pagesize)
+              .on('value',(articles)=>{
+                callback(articles);
+              })
+    // });
   }
-  //한개의 글을 얻어 온다.
   getArticle(key){
-    return firebase.database().ref('/posts/' + key);
+    return new Promise(resolve=>{
+      firebase.database().ref('/posts/'+key)
+              .on('value',(articles)=>{
+                resolve(articles);
+              })
+    });
+  }
+  getUI(){
+    return new firebaseui.auth.AuthUI(firebase.auth());
+  }
+  
+  logout(){
+    return firebase.auth().signOut();
   }
 }

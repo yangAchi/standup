@@ -1,4 +1,4 @@
-﻿.card{
+.card{
   color: #222;
   text-decoration: none;
   position: relative;
@@ -15,10 +15,21 @@
   top: 0;
   max-height: 180px;
 }
+.card_image_small{
+  width: 83;
+  height: 83;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 .width100{
   width: 100%;
   height:auto;
   background-size: 100% 100%;
+}
+.card_text_noneImage{
+  display: none;
 }
 .card_img{
   height: 100%;
@@ -27,7 +38,24 @@
   left: 50%;
   border-bottom: 1px solid rgba(79, 73, 75, 0.28);
 }
+.card_img_small{
+  position: relative;
+  border-right: 1px solid rgba(79, 73, 75, 0.28);
+}
 .card_text{
+  margin-left: 5px;
+  min-height: 80px;
+  padding: 5px;
+  box-sizing: border-box
+}
+.card_text_small{
+  margin-left: 88px;
+  height: 83px;
+  padding: 5px;
+  box-sizing: border-box;
+
+}
+.card_text_noneImage{
   margin-left: 5px;
   min-height: 80px;
   padding: 5px;

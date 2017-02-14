@@ -1,3 +1,4 @@
+/*placeholder*/
 [contenteditable=true]:empty:before{
   content: attr(placeholder);
   color: #aaa;
@@ -35,4 +36,19 @@
   background-color: #02B875;
   border-radius: 3px 3px 3px 3px;
   border: 0px;
+}
+.upload:disabled{
+  background-color: #aaa;
+}
+.editor_header{
+  text-align: left;
+  background-color: white;
+  border-bottom: 1px solid #dddfe2;
+  width :100%;
+  height: 50px;
+}
+.today_title{
+  float: left;
+  margin-top: 17px;
+  padding-left: 10px;
 }

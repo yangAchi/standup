@@ -1,8 +1,7 @@
-﻿ul{
+ul{
   list-style-type: none;
   padding:10px;
 }
-
 .list_row{
   margin-top: 3px;
   padding-top:  10px;
@@ -11,16 +10,13 @@
   background-color: white;
   border:1px solid #dddfe2;
 }
-
 .common_margin{
   margin: 15px;
 }
-
 .grey_text{
   color:#666;
   font-size: 12
 }
-
 pre {
     white-space: pre-wrap;       /* Since CSS 2.1 */
     white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
