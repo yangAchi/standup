@@ -1,4 +1,4 @@
-import { USER, GROUP,ALL } from '../constants'
+import { USER,GROUP,ALL,TAGS } from '../constants'
 import FirebaseDao from '../FirebaseDao'
 import config from '../config'
 const dao = new FirebaseDao(config);
@@ -6,6 +6,13 @@ const dao = new FirebaseDao(config);
 export function userArticles() {
   return {
     type: USER
+  }
+}
+
+export function tagArticles(tag) {
+  return {
+    type: TAGS,
+    tag : tag
   }
 }
 /*

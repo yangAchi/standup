@@ -21,6 +21,8 @@ export default class FirebaseDao {
     return firebase.database().ref().child('posts').push(postData);
   }
   update(key,postData){
+    console.log("update");
+    console.log(postData);
     var updates = {};
     updates['/posts/' + key] = postData;
     updates['/user-posts/genji/' + key] = postData;

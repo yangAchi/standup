@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import logo from './stand_up_logo.png';
 import './App.css';
-import Editor from './Editor'
+import Editor from './Editor';
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import {updateArticle} from './actions/Article'
-
+import Search from './Search'
 /*
 * App Component
 */
@@ -30,6 +30,7 @@ class App extends Component {
           </Link>
         </div>
         <Editor submit={this.submit}/>
+        <Search />
         {this.props.children}
       </div>
     );

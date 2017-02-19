@@ -1,7 +1,7 @@
 /*global firebase*/
 import React ,{Component} from 'react';
 import './PopCard.css';
-import {userArticles,loadArticles} from './actions/Article';
+import {userArticles,loadArticles,tagArticles} from './actions/Article';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
 
@@ -21,6 +21,11 @@ class PopCard extends Component{
           <div>
           <a href="#" onClick={()=>dispatch(loadArticles())}>전체 글 보기</a>
           </div>
+
+          <div>
+          <a href="#" onClick={()=>dispatch(tagArticles("123"))}>Tags</a>
+          </div>
+
           <div>
             <a href="#" onClick={()=>this.logout()}>로그아웃</a>
           </div>

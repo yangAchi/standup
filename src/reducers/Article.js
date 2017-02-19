@@ -1,8 +1,9 @@
 /*global firebaseui,firebase*/
-import {USER,GROUP} from '../constants';
+import {USER,GROUP,TAGS} from '../constants';
 import firebase from 'firebase';
 export default function getArticles(state,action){
   if(action.type === USER){
+    console.log("USER");
     let articles_of_mine = [];
     let cUser = firebase.auth().currentUser;
     state.articles.forEach(function(article){
@@ -15,6 +16,25 @@ export default function getArticles(state,action){
   else if(action.type === GROUP){
     //some code would be here
     return Object.assign({},state,action);
+  }
+  else if(action.type === TAGS){
+    console.log("TAGS");
+    console.log(action.tag);
+    let articles_of_tag = [];
+    // let cUser = firebase.auth().currentUser;
+    state.articles.forEach(function(article){
+      if(article.tags) {
+        article.tags.forEach(function(tag){
+        if(tag.text && action.tag && (tag.text === action.tag)){
+          articles_of_tag.push(article);
+          return;
+        }
+      });
+      }
+      console.log(article.tags);
+    });
+
+    return Object.assign({},state,{articles:articles_of_tag});
   }
   return Object.assign({},state,action);
 }
