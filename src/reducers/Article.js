@@ -2,6 +2,7 @@
 import {USER,GROUP,TAGS} from '../constants';
 import firebase from 'firebase';
 export default function getArticles(state,action){
+
   if(action.type === USER){
     console.log("USER");
     let articles_of_mine = [];
@@ -31,10 +32,9 @@ export default function getArticles(state,action){
         }
       });
       }
-      console.log(article.tags);
     });
-
     return Object.assign({},state,{articles:articles_of_tag});
   }
+  console.log("ALL");
   return Object.assign({},state,action);
 }

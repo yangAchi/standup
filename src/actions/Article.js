@@ -4,12 +4,25 @@ import config from '../config'
 const dao = new FirebaseDao(config);
  
 export function userArticles() {
-  return {
-    type: USER
-  }
+  // loadArticles() {
+  //   const {dispatch} = this.props;
+  //   return () => dispatch(userArticles());
+  //     // dao.list(25,(articles)=>dispatch(getArticles(articles)));
+  // }
+
+  // return {
+  //   type: USER
+  // };
+  
+  return (dispatch) => {
+    // let action = {};
+    // action.type = USER;
+    dao.list(25,(articles)=>dispatch(getArticles(articles,{type:USER})));
+  };
 }
 
 export function tagArticles(tag) {
+
   return {
     type: TAGS,
     tag : tag
@@ -18,14 +31,22 @@ export function tagArticles(tag) {
 /*
 * 여기부터
 */
-export function getArticles(articles){
+export function getArticles(articles,action){
+
   var items = [];
   articles.forEach(function(article){
     var item = article.val();
     item['key'] = article.key;
     items.push(item);
   })
+  console.log(items);
   if(items && items.length>0){
+    if(action && action.type === USER) {
+      return{
+        type : USER,
+        articles : items.reverse()
+      }
+    }
     return{
       type : ALL,
       articles : items.reverse()

@@ -104,12 +104,15 @@ class Editor extends Component {
     console.log("handleSubmit");
     e.preventDefault();
     this.props.submit(this.getArticle());
+
     this.setState({
       embedlyUrl : undefined,
       content : undefined,
       cardInfo : undefined,
       tags : []
     });
+
+    this.refs.innerText.textContent = "";
   }
   detectURL(text){
     var urls = text.match(/(https?:\/\/[^\s]+)/g)||text.match(/(www.[^\s]+)/g);
@@ -156,6 +159,7 @@ class Editor extends Component {
             placeholder="글쓰기..."
             onPaste={this.onPaste}
             onKeyUp={this.editorChange}
+            ref="innerText"
             // dangerouslySetInnerHTML={{__html: this.state.content}}
             ></div>
             <Card cardInfo={this.state.cardInfo}/>
