@@ -32,15 +32,23 @@ https://embed.ly
 .env에 embedly API Key 값 넣기
 
 (6) npm 설치
+
 npm install react-redux --save
 
 react-router
+
 firebase
+
 redux
+
 react-router-redux
+
 redux-thunk
+
 firebaseui
+
 axios
+
 react-tag-input
 
 (7) Firebase의 Database 규칙
