@@ -5,13 +5,16 @@ export default function getArticles(state,action){
 
   if(action.type === USER){
     console.log("USER");
+    console.log(action.articles);
     let articles_of_mine = [];
     let cUser = firebase.auth().currentUser;
     state.articles.forEach(function(article){
+      console.log(article);
       if( article.user.uid && cUser && (article.user.uid ===  cUser.uid)){
         articles_of_mine.push(article);
       }
     });
+    console.log(articles_of_mine);
     return Object.assign({},state,{articles:articles_of_mine});
   }
   else if(action.type === GROUP){
@@ -33,8 +36,10 @@ export default function getArticles(state,action){
       });
       }
     });
+    console.log(articles_of_tag);
     return Object.assign({},state,{articles:articles_of_tag});
   }
   console.log("ALL");
+  console.log(action);
   return Object.assign({},state,action);
 }

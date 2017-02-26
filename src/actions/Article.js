@@ -23,11 +23,21 @@ export function userArticles() {
 
 export function tagArticles(tag) {
 
-  return {
-    type: TAGS,
-    tag : tag
-  }
+  // return {
+  //   type: TAGS,
+  //   tag : tag
+  // }
+  return (dispatch) => {
+    dao.list(25,(articles)=>dispatch(getArticles(articles,{type:TAGS,tag:tag})));
+  };
 }
+
+export function loadArticles() {
+  return (dispatch) => {
+    dao.list(25,(articles)=>dispatch(getArticles(articles)));
+  };
+}
+
 /*
 * 여기부터
 */
@@ -39,25 +49,34 @@ export function getArticles(articles,action){
     item['key'] = article.key;
     items.push(item);
   })
-  console.log(items);
+  
   if(items && items.length>0){
     if(action && action.type === USER) {
+      console.log("USER");
+      console.log(items);
       return{
         type : USER,
         articles : items.reverse()
       }
     }
+    else if(action && action.type === TAGS) {
+      console.log("TAGS");
+      console.log(items);
+      return{
+        type : TAGS,
+        tag : action.tag,
+        articles : items.reverse()
+      }
+    }
+    console.log("ALL");
+    console.log(items);
     return{
       type : ALL,
       articles : items.reverse()
     }
   }
 }
-export function loadArticles() {
-  return (dispatch) => {
-    dao.list(25,(articles)=>dispatch(getArticles(articles)));
-  };
-}
+
 export function updateArticle(postData){
   return (dispatch) => {
     dao.update(dao.newKey(),postData);
