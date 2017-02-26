@@ -33,6 +33,7 @@ https://embed.ly
 
 (6) npm 설치
 npm install react-redux --save
+
 react-router
 firebase
 redux
