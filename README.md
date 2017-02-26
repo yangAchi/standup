@@ -1,6 +1,6 @@
 [실행]
 
-https://bibim.org
+bibim.org
 
 
 
