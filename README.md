@@ -7,7 +7,7 @@ bibim.org
 [설치] 
 
 (1) git 설치
-https://git-scm.com/
+- https://git-scm.com/
 
 (2) github에서 clone
 - git clone https://github/yangAchi/standup.git
@@ -16,9 +16,7 @@ https://git-scm.com/
 - node-modules는 create-react-app 생성으로 얻는다.
 
 (4) Firebase 프로젝트 만들기
-
-https://firebase.google.com/
-
+- https://firebase.google.com/
 - 웹 앱에 Firebase 추가 
 - 프로젝트의 루트 폴더에 .env 만들고 Firebase Key 값 넣기
 
@@ -30,8 +28,8 @@ https://firebase.google.com/
 - REACT_APP_EMBEDLY_KEY=
 
 (5) embedly 프로젝트 만들기
-https://embed.ly
-.env에 embedly API Key 값 넣기
+- https://embed.ly
+- .env에 embedly API Key 값 넣기
 
 (6) npm 설치
 - npm install react-redux --save
