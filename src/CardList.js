@@ -10,11 +10,21 @@ class CardList extends Component {
     dispatch(loadArticles());
   }
   createCard(item,index){
+    var tagList = [];
+    if(item.tags) {
+      tagList = item.tags.map(function(tag){
+                return "#"+tag.text+" ";
+              })
+    }
+
     return(<li className="list_row" key={item.key}>
               <pre className="common_margin grey_text">{item.content}</pre>
               {
                 (item.cardInfo)?<Card cardInfo={item.cardInfo}/>:""
               }
+              <pre className="tagList">
+                {tagList}
+              </pre>
             </li>);
   }
   render() {

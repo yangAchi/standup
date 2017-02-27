@@ -4,30 +4,17 @@ import config from '../config'
 const dao = new FirebaseDao(config);
  
 export function userArticles() {
-  // loadArticles() {
-  //   const {dispatch} = this.props;
-  //   return () => dispatch(userArticles());
-  //     // dao.list(25,(articles)=>dispatch(getArticles(articles)));
-  // }
-
-  // return {
-  //   type: USER
-  // };
-  
   return (dispatch) => {
-    // let action = {};
-    // action.type = USER;
     dao.list(25,(articles)=>dispatch(getArticles(articles,{type:USER})));
   };
 }
 
 export function tagArticles(tag) {
-
-  return {
-    type: TAGS,
-    tag : tag
-  }
+  return (dispatch) => {
+    dao.list(25,(articles)=>dispatch(getArticles(articles,{type:TAGS,tag:tag})));
+  };
 }
+
 /*
 * 여기부터
 */
@@ -44,6 +31,13 @@ export function getArticles(articles,action){
     if(action && action.type === USER) {
       return{
         type : USER,
+        articles : items.reverse()
+      }
+    }
+    else if(action && action.type === TAGS) {
+      return{
+        type : TAGS,
+        tag : action.tag,
         articles : items.reverse()
       }
     }

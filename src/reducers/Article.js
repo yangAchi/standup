@@ -7,7 +7,7 @@ export default function getArticles(state,action){
     console.log("USER");
     let articles_of_mine = [];
     let cUser = firebase.auth().currentUser;
-    state.articles.forEach(function(article){
+    action.articles.forEach(function(article){
       if( article.user.uid && cUser && (article.user.uid ===  cUser.uid)){
         articles_of_mine.push(article);
       }
@@ -23,7 +23,7 @@ export default function getArticles(state,action){
     console.log(action.tag);
     let articles_of_tag = [];
     // let cUser = firebase.auth().currentUser;
-    state.articles.forEach(function(article){
+    action.articles.forEach(function(article){
       if(article.tags) {
         article.tags.forEach(function(tag){
         if(tag.text && action.tag && (tag.text === action.tag)){
