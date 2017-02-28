@@ -24,7 +24,8 @@ class Editor extends Component {
       embedlyUrl : undefined,
       content : undefined,
       cardInfo : undefined,
-      tags : []
+      tags : [],
+      category : undefined
     };
     console.log(this.state.tags);
   }
@@ -93,6 +94,7 @@ class Editor extends Component {
       article.cardInfo = this.state.cardInfo;
     }
     article.tags = this.state.tags;
+
     return article;
   }
   hasValue(value){
@@ -118,6 +120,11 @@ class Editor extends Component {
     var urls = text.match(/(https?:\/\/[^\s]+)/g)||text.match(/(www.[^\s]+)/g);
     if(urls && urls.length>0) return urls[0];
     else return undefined;
+  }
+
+  //
+  categoryAdd() {
+
   }
  // tag 관련 함수
   tagDelete(i) {
@@ -168,6 +175,9 @@ class Editor extends Component {
           <button className="upload"
             disabled={!this.hasValue(this.state.content)}
             onClick={this.handleSubmit}><span>스탠드업!</span></button>
+        </div>
+        <div className="cate">
+          
         </div>
         <Tags onDelete={this.tagDelete}
           onAddition={this.tagAddition}

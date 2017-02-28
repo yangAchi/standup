@@ -1,4 +1,4 @@
-import { USER,GROUP,ALL,TAGS } from '../constants'
+import { USER,GROUP,ALL,TAGS,CATEGORY} from '../constants'
 import FirebaseDao from '../FirebaseDao'
 import config from '../config'
 const dao = new FirebaseDao(config);
@@ -12,6 +12,13 @@ export function userArticles() {
 export function tagArticles(tag) {
   return (dispatch) => {
     dao.list(25,(articles)=>dispatch(getArticles(articles,{type:TAGS,tag:tag})));
+  };
+}
+
+
+export function categoryView(category) {
+  return (dispatch) => {
+    dao.list(25,(articles)=>dispatch(getArticles(articles,{type:CATEGORY,category:category})));
   };
 }
 
