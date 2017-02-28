@@ -6,6 +6,7 @@ import Card from './Card';
 import getEmbedly from './EmbedlyDao';
 import firebase from 'firebase';
 import Tags from './tags';
+import Dropdown from 'react-dropdown'
 
 class Editor extends Component {
   constructor(props){
@@ -24,8 +25,7 @@ class Editor extends Component {
       embedlyUrl : undefined,
       content : undefined,
       cardInfo : undefined,
-      tags : [],
-      category : undefined
+      tags : []
     };
     console.log(this.state.tags);
   }
@@ -94,7 +94,8 @@ class Editor extends Component {
       article.cardInfo = this.state.cardInfo;
     }
     article.tags = this.state.tags;
-
+    article.category = this.refs.drop.value;
+    console.log(this.refs.drop.value);
     return article;
   }
   hasValue(value){
@@ -152,6 +153,13 @@ class Editor extends Component {
   }
 
   render() {
+    const options = [
+      { value: '도서', label: '도서' },
+      { value: '운동', label: '운동' },
+      { value: '음악', label: '음악' },
+      { value: '개발', label: '개발' }
+    ];
+    const defaultOption = options[0];
     return (
       <div className="wrapEditor">
         <div className="editor_header">
@@ -177,7 +185,7 @@ class Editor extends Component {
             onClick={this.handleSubmit}><span>스탠드업!</span></button>
         </div>
         <div className="cate">
-          
+          <Dropdown ref="drop" options={options} onChange={this._onSelect} placeholder="Select a Category" />
         </div>
         <Tags onDelete={this.tagDelete}
           onAddition={this.tagAddition}
