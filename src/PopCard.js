@@ -10,11 +10,6 @@ class PopCard extends Component{
     firebase.auth().signOut();
   }
 
-  // loadArticles() {
-  //   const {dispatch} = this.props;
-  //   return () => dispatch(userArticles());
-  //     // dao.list(25,(articles)=>dispatch(getArticles(articles)));
-  // }
   render(){
     const {dispatch} = this.props;
     if(this.props.isPop){

@@ -1,32 +1,15 @@
-import { USER,GROUP,ALL,TAGS } from '../constants'
+import { USER,GROUP,ALL,TAGS,CATEGORY} from '../constants'
 import FirebaseDao from '../FirebaseDao'
 import config from '../config'
 const dao = new FirebaseDao(config);
  
 export function userArticles() {
-  // loadArticles() {
-  //   const {dispatch} = this.props;
-  //   return () => dispatch(userArticles());
-  //     // dao.list(25,(articles)=>dispatch(getArticles(articles)));
-  // }
-
-  // return {
-  //   type: USER
-  // };
-  
   return (dispatch) => {
-    // let action = {};
-    // action.type = USER;
     dao.list(25,(articles)=>dispatch(getArticles(articles,{type:USER})));
   };
 }
 
 export function tagArticles(tag) {
-
-  // return {
-  //   type: TAGS,
-  //   tag : tag
-  // }
   return (dispatch) => {
     dao.list(25,(articles)=>dispatch(getArticles(articles,{type:TAGS,tag:tag})));
   };
@@ -35,6 +18,12 @@ export function tagArticles(tag) {
 export function loadArticles() {
   return (dispatch) => {
     dao.list(25,(articles)=>dispatch(getArticles(articles)));
+  }
+}
+
+export function categoryView(category) {
+  return (dispatch) => {
+    dao.list(25,(articles)=>dispatch(getArticles(articles,{type:CATEGORY,category:category})));
   };
 }
 

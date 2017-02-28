@@ -11,19 +11,24 @@ class Search extends Component{
     this.state={
       tag : undefined
     };
+    this.serchTag = this.serchTag.bind(this);
+  }
+
+  serchTag() {
+    const {dispatch} = this.props;
+    dispatch(tagArticles(this.refs.myText.textContent));
+    this.refs.myText.textContent = "";
   }
 
   render(){
-    const {dispatch} = this.props;
     return(
       <div className="tagEdit">
         <div className="innerTagEdit"
               contentEditable="true"
-              placeholder="글쓰기..."
+              placeholder="Search"
               ref="myText"></div>
         <button className="tagButton"
-          // disabled={!this.hasValue(this.state.tag)}
-          onClick={()=>dispatch(tagArticles(this.refs.myText.textContent))}>
+          onClick={this.serchTag}>
           <span>검색</span>
         </button>
       </div>
