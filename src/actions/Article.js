@@ -1,4 +1,4 @@
-import { USER,GROUP,ALL,TAGS,CATEGORY} from '../constants'
+import { USER,GROUP,ALL,TAGS} from '../constants'
 import FirebaseDao from '../FirebaseDao'
 import config from '../config'
 const dao = new FirebaseDao(config);
@@ -19,12 +19,6 @@ export function loadArticles() {
   return (dispatch) => {
     dao.list(25,(articles)=>dispatch(getArticles(articles)));
   }
-}
-
-export function categoryView(category) {
-  return (dispatch) => {
-    dao.list(25,(articles)=>dispatch(getArticles(articles,{type:CATEGORY,category:category})));
-  };
 }
 
 /*
