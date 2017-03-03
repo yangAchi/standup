@@ -1,10 +1,10 @@
-[실행]!!
+[실행]
 
-bibim.org
+https://accidental-smoke.surge.sh
 
 
 
-[설치] 
+[설치]
 
 (1) git 설치
 - https://git-scm.com/
@@ -17,7 +17,7 @@ bibim.org
 
 (4) Firebase 프로젝트 만들기
 - https://firebase.google.com/
-- 웹 앱에 Firebase 추가 
+- 웹 앱에 Firebase 추가
 - 프로젝트의 루트 폴더에 .env 만들고 Firebase Key 값 넣기
 
 - REACT_APP_FIREBASE_KEY=
@@ -56,10 +56,10 @@ bibim.org
 
 (11) Firebase 인증
 - authentication -> 로그인 방법 -> 구글 -> 사용설정 -> 저장
-- 도메인 추가 -> surge로 생성된 도메인 추가 
+- 도메인 추가 -> surge로 생성된 도메인 추가
 
 (12) 웹 브라우저에 도메인 입력
 
-(13) 로그인 -> 구글 -> page not found 
+(13) 로그인 -> 구글 -> page not found
 - URL에서 login 지우고 엔터
-- 다시 로그인 
+- 다시 로그인
