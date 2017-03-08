@@ -25,7 +25,6 @@ export function loadArticles() {
 * 여기부터
 */
 export function getArticles(articles,action){
-
   var items = [];
   articles.forEach(function(article){
     var item = article.val();

@@ -1,6 +1,6 @@
 [실행]
 
-accidental-smoke.surge.sh
+https://accidental-smoke.surge.sh
 
 
 

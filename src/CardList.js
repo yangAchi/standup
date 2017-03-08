@@ -5,16 +5,26 @@ import {connect} from 'react-redux'
 import {loadArticles} from './actions/Article'
 
 class CardList extends Component {
+
   componentWillMount() {
     const {dispatch} = this.props;
     dispatch(loadArticles());
   }
+
   createCard(item,index){
     var tagList = [];
+    var tagList2 = "";
     if(item.tags) {
       tagList = item.tags.map(function(tag){
                 return "#"+tag.text+" ";
               })
+      tagList2 = item.tags.map(function(tag,index){
+                return <li className="tag_list" key={index}>
+                  <pre className="tagList">
+                    {tag.text}
+                  </pre>
+                </li>;
+                })
     }
 
     return(<li className="list_row" key={item.key}>
@@ -22,6 +32,9 @@ class CardList extends Component {
               {
                 (item.cardInfo)?<Card cardInfo={item.cardInfo}/>:""
               }
+              <ul>
+                {tagList2}
+              </ul>
               <pre className="tagList">
                 {tagList}
               </pre>
