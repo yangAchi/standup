@@ -4,7 +4,7 @@ import './App.css';
 import Editor from './Editor';
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import {updateArticle} from './actions/Article'
+import {updateArticle, loadArticles} from './actions/Article'
 import Search from './Search'
 
 /*
@@ -27,7 +27,11 @@ class App extends Component {
       this.forceUpdate();
     }
   }
-
+  // componentWillUpdate() {
+  //   console.log("App componentWillUpdate");
+  //   const {dispatch} = this.props;
+  //   dispatch(loadArticles());
+  // }
   render() {
     return (
       <div className="App">
