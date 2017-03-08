@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Card from './Card'
 import './CardList.css'
 import {connect} from 'react-redux'
-import {loadArticles} from './actions/Article'
+import {loadArticles,tagArticles} from './actions/Article'
+
 
 class CardList extends Component {
 
@@ -12,37 +13,35 @@ class CardList extends Component {
   }
 
   createCard(item,index){
-    var tagList = [];
-    var tagList2 = "";
+    const {dispatch} = this.props;
+    var tagList = "";
     if(item.tags) {
-      tagList = item.tags.map(function(tag){
-                return "#"+tag.text+" ";
-              })
-      tagList2 = item.tags.map(function(tag,index){
+      tagList = item.tags.map(function(tag,index){
                 return <li className="tag_list" key={index}>
-                  <pre className="tagList">
-                    {tag.text}
-                  </pre>
+                  <a href="#" className="tagList" onClick={()=>dispatch(tagArticles(tag.text))}>
+                    {"#"+tag.text}
+                  </a>
                 </li>;
                 })
     }
 
     return(<li className="list_row" key={item.key}>
+              <div className="common_margin">
               <pre className="common_margin grey_text">{item.content}</pre>
               {
                 (item.cardInfo)?<Card cardInfo={item.cardInfo}/>:""
               }
               <ul>
-                {tagList2}
-              </ul>
-              <pre className="tagList">
                 {tagList}
-              </pre>
-            </li>);
+              </ul>
+              </div>
+            </li>
+            );
   }
+
   render() {
     if(this.props.articles && this.props.articles.length>0)
-      return <ul>{ this.props.articles.map(this.createCard) }</ul>;
+      return <ul>{ this.props.articles.map(this.createCard,this) }</ul>;
     else return <div key="015b"/>
   }
 }

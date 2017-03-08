@@ -1,4 +1,4 @@
-import { USER,GROUP,ALL,TAGS} from '../constants'
+import { USER,ALL,TAGS} from '../constants'
 import FirebaseDao from '../FirebaseDao'
 import config from '../config'
 const dao = new FirebaseDao(config);
@@ -34,7 +34,6 @@ export function getArticles(articles,action){
   
   if(items && items.length>0){
     if(action && action.type === USER) {
-      console.log("USER");
       console.log(items);
       return{
         type : USER,
@@ -42,7 +41,6 @@ export function getArticles(articles,action){
       }
     }
     else if(action && action.type === TAGS) {
-      console.log("TAGS");
       console.log(items);
       return{
         type : TAGS,
@@ -50,8 +48,7 @@ export function getArticles(articles,action){
         articles : items.reverse()
       }
     }
-    console.log("ALL");
-    console.log(items);
+    console.log("ALL action");
     return{
       type : ALL,
       articles : items.reverse()
@@ -63,10 +60,4 @@ export function updateArticle(postData){
   return (dispatch) => {
     dao.update(dao.newKey(),postData);
   };
-}
-export function groupArticles(articles) {
-  return {
-    type: GROUP,
-    articles: articles
-  }
 }

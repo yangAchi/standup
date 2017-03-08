@@ -26,7 +26,6 @@ class Editor extends Component {
       cardInfo : undefined,
       tags : []
     };
-    console.log(this.state.tags);
   }
   getForcedState(embedlyUrl,content){
     return new Promise(resolve=>{
