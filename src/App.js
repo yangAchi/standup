@@ -14,11 +14,6 @@ class App extends Component {
   constructor(){
     super();
     this.submit = this.submit.bind(this);
-    this.state = {
-      opened : true,
-      sidebarOpen: false,
-      sidebarDocked: false
-    };
   }
   submit(article){
     if(article){
@@ -27,11 +22,6 @@ class App extends Component {
       this.forceUpdate();
     }
   }
-  // componentWillUpdate() {
-  //   console.log("App componentWillUpdate");
-  //   const {dispatch} = this.props;
-  //   dispatch(loadArticles());
-  // }
   render() {
     return (
       <div className="App">

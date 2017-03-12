@@ -126,12 +126,12 @@ class Editor extends Component {
     this.setState({tags: tags});
   }
   tagAddition(tag) {
-    let tags = this.state.tags;
-    tags.push({
-        id: tags.length + 1,
+    let tags1 = this.state.tags;
+    tags1.push({
+        id: tags1.length + 1,
         text: tag
     });
-    this.setState({tags: tags});
+    this.setState({tags: tags1});
   }
   tagDrag(tag, currPos, newPos) {
     let tags = this.state.tags;
@@ -164,15 +164,17 @@ class Editor extends Component {
             ></div>
             <Card cardInfo={this.state.cardInfo}/>
         </div>
+        <Tags onDelete={this.tagDelete}
+          onAddition={this.tagAddition}
+          onDrag={this.tagDrag}
+          tags={this.state.tags}/>
+
         <div className="actionBar">
           <button className="upload"
             disabled={!this.hasValue(this.state.content)}
             onClick={this.handleSubmit}><span>스탠드업!</span></button>
         </div>
-        <Tags onDelete={this.tagDelete}
-          onAddition={this.tagAddition}
-          onDrag={this.tagDrag}
-          tags={this.state.tags}/>
+
       </div>
     );
   }
