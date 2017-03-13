@@ -126,12 +126,15 @@ class Editor extends Component {
     this.setState({tags: tags});
   }
   tagAddition(tag) {
+    //console.log(tag);
+    //console.log("Hello");
     let tags1 = this.state.tags;
     tags1.push({
         id: tags1.length + 1,
         text: tag
     });
     this.setState({tags: tags1});
+    return tag;
   }
   tagDrag(tag, currPos, newPos) {
     let tags = this.state.tags;

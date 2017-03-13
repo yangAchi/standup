@@ -22,3 +22,12 @@ it('hasValue 3',()=>{
 it('hasValue 4',()=>{
   expect(ed.hasValue()).toEqual(false);
 });
+
+
+it('tagAddition 1',()=>{
+  expect(ed.tagAddition("aaa")).toEqual("aaa");
+});
+
+it('tagAddition 2',()=>{
+  expect(ed.tagAddition("aaa")).toEqual("bbb");
+});
