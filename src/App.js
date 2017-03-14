@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import logo from './stand_up_logo.png';
+import logo from './img/logo.png';
+import burgerIcon from './img/burgerIcon.png';
 import './App.css';
+import './BurgerMenu.css';
 import Editor from './Editor';
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import {updateArticle, loadArticles} from './actions/Article'
+import { updateArticle, loadArticles } from './actions/Article'
 import Search from './Search'
+import { slide as Menu } from 'react-burger-menu'
 
 /*
 * App Component
@@ -35,7 +38,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
+        <Menu pageWrapId={ "page-wrap" } customBurgerIcon={ <img src={ burgerIcon } /> }/>
+        <div className="App-header" id="page-wrap">
           <Link to="/">
             <img src={logo} className="App-logo" alt="logo" />
           </Link>

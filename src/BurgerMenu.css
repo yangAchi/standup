@@ -3,8 +3,8 @@
   position: fixed;
   width: 36px;
   height: 30px;
-  left: 36px;
-  top: 36px;
+  left: 16px;
+  top: 16px;
 }
 
 /* Color/shape of burger icon bars */
@@ -38,7 +38,6 @@
 /* Wrapper for item list */
 .bm-item-list {
   color: #b8b7ad;
-  padding: 0.8em;
 }
 
 /* Styling of overlay */
