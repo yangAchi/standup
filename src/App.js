@@ -16,7 +16,7 @@ class App extends Component {
     this.submit = this.submit.bind(this);
     this.state = {
       opened : true,
-      sidebarOpen: false, 
+      sidebarOpen: false,
       sidebarDocked: false
     };
   }

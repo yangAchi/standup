@@ -6,6 +6,7 @@ import Card from './Card';
 import getEmbedly from './EmbedlyDao';
 import firebase from 'firebase';
 import Tags from './tags';
+import Dropdown from 'react-drop-down';
 
 class Editor extends Component {
   constructor(props){
@@ -20,28 +21,39 @@ class Editor extends Component {
     this.tagDelete  = this.tagDelete.bind(this);
     this.tagAddition  = this.tagAddition.bind(this);
     this.tagDrag  = this.tagDrag.bind(this);
+
     this.state={
       embedlyUrl : undefined,
       content : undefined,
       cardInfo : undefined,
-      tags : []
+      tags : [],
+      value: 'reactjs'
     };
   }
+
+  handleChange (e) {
+      this.setState({value: e})
+      console.log(e);
+    }
+
   getForcedState(embedlyUrl,content){
     return new Promise(resolve=>{
       if(embedlyUrl){
         getEmbedly(embedlyUrl).then((response)=>{
           let cardInfo = Object.assign({},response.data);
+          let category =this.state.value;
           resolve({
             embedlyUrl : embedlyUrl,
             content : content,
-            cardInfo : cardInfo
+            cardInfo : cardInfo,
+            category : category
           });
         }).catch((error)=>{
           resolve({
             embedlyUrl : undefined,
             content : undefined,
-            cardInfo : undefined
+            cardInfo : undefined,
+            category : undefined
           });
         });
       }else{
@@ -92,6 +104,7 @@ class Editor extends Component {
       article.cardInfo = this.state.cardInfo;
     }
     article.tags = this.state.tags;
+    article.value=this.state.value;
     return article;
   }
   hasValue(value){
@@ -104,13 +117,15 @@ class Editor extends Component {
     e.preventDefault();
     this.props.submit(this.getArticle());
 
+    /*
     this.setState({
       embedlyUrl : undefined,
       content : undefined,
       cardInfo : undefined,
-      tags : []
+      tags : [],
+      category : undefined
     });
-
+    */
     this.refs.innerText.textContent = "";
   }
   detectURL(text){
@@ -168,12 +183,22 @@ class Editor extends Component {
           <button className="upload"
             disabled={!this.hasValue(this.state.content)}
             onClick={this.handleSubmit}><span>스탠드업!</span></button>
+
+          <div>
+            <Dropdown value={this.state.value}
+              onChange={this.handleChange.bind(this)}
+              options={[ 'aaa', 'bbb', 'ccc', 'ddd' ]} />
+          </div>
         </div>
+
         <Tags onDelete={this.tagDelete}
           onAddition={this.tagAddition}
           onDrag={this.tagDrag}
           tags={this.state.tags}/>
+
+
       </div>
+
     );
   }
 }
