@@ -23,12 +23,13 @@ class SearchCategory extends Component{
 
   render(){
     return(
-      <div>
+      <div className="searchCategory">
         <Dropdown value={this.state.value}
           onChange={this.searchCategory.bind(this)}
           options={['[SELECT]', 'aaa', 'bbb', 'ccc', 'ddd' ]} />
       </div>
       );
+
   }
 }
 export default connect()(SearchCategory)

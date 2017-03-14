@@ -33,17 +33,20 @@ class App extends Component {
   //   const {dispatch} = this.props;
   //   dispatch(loadArticles());
   // }
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
+          <div className="Category">
+           <SearchCategory />
+          </div>
           <Link to="/">
             <img src={logo} className="App-logo" alt="logo" />
           </Link>
         </div>
         <Editor submit={this.submit}/>
         <Search />
-        <SearchCategory />
         {this.props.children}
       </div>
     );
