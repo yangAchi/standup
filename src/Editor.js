@@ -187,7 +187,7 @@ class Editor extends Component {
           <div>
             <Dropdown value={this.state.value}
               onChange={this.handleChange.bind(this)}
-              options={[ 'aaa', 'bbb', 'ccc', 'ddd' ]} />
+              options={[ '[SELECT]','aaa', 'bbb', 'ccc', 'ddd' ]} />
           </div>
         </div>
 

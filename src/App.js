@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import {updateArticle, loadArticles} from './actions/Article'
 import Search from './Search'
+import SearchCategory from './SearchCategory'
 
 /*
 * App Component
@@ -42,6 +43,7 @@ class App extends Component {
         </div>
         <Editor submit={this.submit}/>
         <Search />
+        <SearchCategory />
         {this.props.children}
       </div>
     );

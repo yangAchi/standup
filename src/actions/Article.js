@@ -1,8 +1,8 @@
-import { USER,ALL,TAGS} from '../constants'
+import { USER,ALL,TAGS,CATEGORY} from '../constants'
 import FirebaseDao from '../FirebaseDao'
 import config from '../config'
 const dao = new FirebaseDao(config);
- 
+
 export function userArticles() {
   return (dispatch) => {
     dao.list(25,(articles)=>dispatch(getArticles(articles,{type:USER})));
@@ -21,6 +21,14 @@ export function loadArticles() {
   }
 }
 
+
+export function searchArticles(category) {
+  return (dispatch) => {
+    dao.list(25,(articles)=>dispatch(getArticles(articles,{type:CATEGORY,category:category})));
+  };
+}
+
+
 /*
 * 여기부터
 */
@@ -31,7 +39,7 @@ export function getArticles(articles,action){
     item['key'] = article.key;
     items.push(item);
   })
-  
+
   if(items && items.length>0){
     if(action && action.type === USER) {
       console.log(items);
@@ -45,6 +53,14 @@ export function getArticles(articles,action){
       return{
         type : TAGS,
         tag : action.tag,
+        articles : items.reverse()
+      }
+    }
+    else if(action && action.type===CATEGORY){
+      console.log(items);
+      return{
+        type:CATEGORY,
+        category: action.category,
         articles : items.reverse()
       }
     }
