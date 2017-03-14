@@ -121,9 +121,12 @@ class Editor extends Component {
 
  // tag 관련 함수
   tagDelete(i) {
+    //console.log(i);
+    //console.log("Hello, tag Delete");
     let tags = this.state.tags;
     tags.splice(i, 1);
     this.setState({tags: tags});
+    return i;
   }
   tagAddition(tag) {
     //console.log(tag);
@@ -137,6 +140,9 @@ class Editor extends Component {
     return tag;
   }
   tagDrag(tag, currPos, newPos) {
+    //console.log(tag);
+    //console.log(currPos);
+    //console.log(newPos);
     let tags = this.state.tags;
 
     // mutate array

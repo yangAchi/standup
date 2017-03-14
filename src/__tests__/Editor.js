@@ -23,11 +23,21 @@ it('hasValue 4',()=>{
   expect(ed.hasValue()).toEqual(false);
 });
 
-
+//태그 추가
 it('tagAddition 1',()=>{
   expect(ed.tagAddition("aaa")).toEqual("aaa");
 });
 
 it('tagAddition 2',()=>{
   expect(ed.tagAddition("aaa")).toEqual("bbb");
+});
+
+
+//태그 삭제
+it('tagDelete 1',()=>{
+  expect(ed.tagDelete(1)).toEqual(1);
+});
+
+it('tagDelete 2',()=>{
+  expect(ed.tagDelete(1)).toEqual(2);
 });

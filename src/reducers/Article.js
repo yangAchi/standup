@@ -17,6 +17,7 @@ export default function getArticles(state,action){
     return Object.assign({},state,{articles:articles_of_mine});
   }
   else if(action.type === TAGS){
+    console.log("koo 4");
     console.log("TAGS Reducer");
     let articles_of_tag = [];
     // let cUser = firebase.auth().currentUser;

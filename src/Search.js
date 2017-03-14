@@ -15,6 +15,8 @@ class Search extends Component{
   }
 
   serchTag() {
+    console.log(this.refs.myText.textContent);
+    console.log("koo 1");
     const {dispatch} = this.props;
     dispatch(tagArticles(this.refs.myText.textContent));
     this.refs.myText.textContent = "";
