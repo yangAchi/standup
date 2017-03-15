@@ -7,7 +7,8 @@ import { Link } from 'react-router'
 import {updateArticle, loadArticles} from './actions/Article'
 import Search from './Search'
 import SearchCategory from './SearchCategory'
-
+import FirebaseDao from './FirebaseDao'
+import config from './config'
 
 /*
 * App Component
@@ -15,12 +16,12 @@ import SearchCategory from './SearchCategory'
 class App extends Component {
   constructor(){
     super();
+
+    this.dao = new FirebaseDao(config);
     this.submit = this.submit.bind(this);
     this.state = {
-      opened : true,
-      sidebarOpen: false,
-      sidebarDocked: false
-    };
+      articles:[]
+    }
   }
   submit(article){
     if(article){
@@ -29,11 +30,7 @@ class App extends Component {
       this.forceUpdate();
     }
   }
-  // componentWillUpdate() {
-  //   console.log("App componentWillUpdate");
-  //   const {dispatch} = this.props;
-  //   dispatch(loadArticles());
-  // }
+
 
   render() {
     return (
@@ -48,6 +45,7 @@ class App extends Component {
         </div>
         <Editor submit={this.submit}/>
         <Search />
+
         {this.props.children}
       </div>
     );

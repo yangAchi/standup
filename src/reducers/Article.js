@@ -1,5 +1,5 @@
 /*global firebaseui,firebase*/
-import {USER,TAGS,CATEGORY} from '../constants';
+import {USER,TAGS,CATEGORY, CATEGORY_ITEM} from '../constants';
 import firebase from 'firebase';
 export default function getArticles(state,action){
 
@@ -50,10 +50,10 @@ export default function getArticles(state,action){
     return Object.assign({},state,{articles:articles_of_tag});
 
   }
-  else if(action.type!==action.categoryItem)
-  {
+  
+
     console.log("ALL Reducer");
     console.log(action);
     return Object.assign({},state,action);
-  }
+
 }

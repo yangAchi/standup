@@ -1,7 +1,7 @@
 /*global firebase*/
 import React ,{Component} from 'react';
 // import './PopCard.css';
-import {tagArticles} from './actions/Article';
+import {loadCategory} from './actions/Article';
 import {connect} from 'react-redux';
 import './AddCategory.css'
 import FirebaseDao from './FirebaseDao'
@@ -24,8 +24,10 @@ class AddCategory extends Component{
     if(article){
           let key = this.dao.newKey();
           let updated = this.dao.update2( key, article );
-          return updated;
-        }
+
+    }
+
+      
   }
 
   render(){

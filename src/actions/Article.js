@@ -1,4 +1,4 @@
-import { USER,ALL,TAGS,CATEGORY} from '../constants'
+import { USER,ALL,TAGS,CATEGORY, CATEGORY_ITEM} from '../constants'
 import FirebaseDao from '../FirebaseDao'
 import config from '../config'
 const dao = new FirebaseDao(config);
@@ -27,6 +27,7 @@ export function searchArticles(category) {
     dao.list(25,(articles)=>dispatch(getArticles(articles,{type:CATEGORY,category:category})));
   };
 }
+
 
 
 /*
@@ -64,6 +65,7 @@ export function getArticles(articles,action){
         articles : items.reverse()
       }
     }
+
     console.log("ALL action");
     return{
       type : ALL,

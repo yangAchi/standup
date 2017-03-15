@@ -62,6 +62,7 @@ export default class FirebaseDao {
               })
     // });
   }
+
   getArticle(key){
     return new Promise(resolve=>{
       firebase.database().ref('/posts/'+key)
