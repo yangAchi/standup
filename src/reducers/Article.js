@@ -40,17 +40,20 @@ export default function getArticles(state,action){
     let articles_of_tag = [];
     // let cUser = firebase.auth().currentUser;
     action.articles.forEach(function(article){
-      if(article.value==action.category) {
+      if(article.value===action.category) {
           articles_of_tag.push(article);
           return;
       }
-      
+
     });
     console.log(articles_of_tag);
     return Object.assign({},state,{articles:articles_of_tag});
 
   }
-  console.log("ALL Reducer");
-  console.log(action);
-  return Object.assign({},state,action);
+  else if(action.type!==action.categoryItem)
+  {
+    console.log("ALL Reducer");
+    console.log(action);
+    return Object.assign({},state,action);
+  }
 }

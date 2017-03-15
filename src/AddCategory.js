@@ -4,10 +4,14 @@ import React ,{Component} from 'react';
 import {tagArticles} from './actions/Article';
 import {connect} from 'react-redux';
 import './AddCategory.css'
+import FirebaseDao from './FirebaseDao'
+import config from './config'
 
 class AddCategory extends Component{
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
+    this.dao = new FirebaseDao(config);
+
     this.state={
       category : undefined
     };
@@ -15,8 +19,13 @@ class AddCategory extends Component{
   }
 
   addCategory() {
-    console.log(this.refs.myText.textContent);
-    this.refs.myText.textContent = "";
+    let article = {};
+    article.categoryItem = this.refs.myText.textContent;
+    if(article){
+          let key = this.dao.newKey();
+          let updated = this.dao.update2( key, article );
+          return updated;
+        }
   }
 
   render(){

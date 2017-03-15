@@ -9,6 +9,7 @@ export default class FirebaseDao {
   constructor(config){
     if(firebase.apps&&firebase.apps.length>0){
       this.firebaseApp = firebase.apps[0];
+      console.log(firebase.apps.length);
     }else{
       this.firebaseApp = firebase.initializeApp(config);
     }
@@ -26,6 +27,14 @@ export default class FirebaseDao {
     var updates = {};
     updates['/posts/' + key] = postData;
     updates['/user-posts/genji/' + key] = postData;
+    return firebase.database().ref().update(updates);
+  }
+  // 카테고리를 위한 저장소
+  update2(key,postData){
+    console.log("update");
+    console.log(postData);
+    var updates = {};
+    updates['/category/' + key] = postData;
     return firebase.database().ref().update(updates);
   }
   remove(key){
@@ -64,7 +73,7 @@ export default class FirebaseDao {
   getUI(){
     return new firebaseui.auth.AuthUI(firebase.auth());
   }
-  
+
   logout(){
     return firebase.auth().signOut();
   }

@@ -8,6 +8,7 @@ import {updateArticle, loadArticles} from './actions/Article'
 import Search from './Search'
 import SearchCategory from './SearchCategory'
 
+
 /*
 * App Component
 */
