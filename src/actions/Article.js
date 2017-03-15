@@ -28,6 +28,11 @@ export function searchArticles(category) {
   };
 }
 
+export function loadCategory() {
+  return (dispatch) => {
+    dao.list(25,(articles)=>dispatch(getArticles(articles)));
+  };
+}
 
 
 /*
@@ -62,6 +67,13 @@ export function getArticles(articles,action){
       return{
         type:CATEGORY,
         category: action.category,
+        articles : items.reverse()
+      }
+    }
+    else if(action && action.type===CATEGORY_ITEM){
+      return{
+        type:CATEGORY_ITEM,
+        category: action.categoryItem,
         articles : items.reverse()
       }
     }

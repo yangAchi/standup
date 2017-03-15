@@ -50,7 +50,24 @@ export default function getArticles(state,action){
     return Object.assign({},state,{articles:articles_of_tag});
 
   }
-  
+  else if(action.type === CATEGORY_ITEM){
+    console.log("koo");
+
+    //console.log("TAGS Reducer");
+    let articles_of_tag = [];
+    // let cUser = firebase.auth().currentUser;
+    action.articles.forEach(function(article){
+      if(article.categoryItem) {
+          articles_of_tag.push(article);
+          console.log(article.categorItem);
+          return;
+      }
+
+    });
+    console.log(articles_of_tag);
+    return Object.assign({},state,{articles:articles_of_tag});
+
+  }
 
     console.log("ALL Reducer");
     console.log(action);

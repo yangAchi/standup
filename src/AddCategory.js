@@ -27,7 +27,9 @@ class AddCategory extends Component{
 
     }
 
-      
+    const {dispatch} = this.props;
+    dispatch(loadCategory());
+
   }
 
   render(){
