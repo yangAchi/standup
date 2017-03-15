@@ -7,6 +7,7 @@ import getEmbedly from './EmbedlyDao';
 import firebase from 'firebase';
 import Tags from './tags';
 import Dropdown from 'react-drop-down';
+import AddCategory from './AddCategory';
 
 class Editor extends Component {
   constructor(props){
@@ -179,10 +180,18 @@ class Editor extends Component {
             ></div>
             <Card cardInfo={this.state.cardInfo}/>
         </div>
+
+
+
         <div className="actionBar">
           <button className="upload"
             disabled={!this.hasValue(this.state.content)}
             onClick={this.handleSubmit}><span>스탠드업!</span></button>
+
+            <div>
+             <AddCategory />
+            </div>
+
 
           <div className="Category2">
             <Dropdown value={this.state.value}
@@ -190,6 +199,7 @@ class Editor extends Component {
               options={[ '[SELECT]','aaa', 'bbb', 'ccc', 'ddd' ]} />
           </div>
         </div>
+
 
         <Tags onDelete={this.tagDelete}
           onAddition={this.tagAddition}
