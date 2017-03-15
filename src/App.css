@@ -7,8 +7,10 @@
 }
 
 .App-header {
-  background-color: #02B875;
+  position: fixed;
+  background-color: #1c9b97;
   height: 50px;
+  width: 100%;
   padding: 5px;
   color: white;
 }

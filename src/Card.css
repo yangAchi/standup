@@ -44,7 +44,7 @@
 }
 .card_text{
   margin-left: 5px;
-  min-height: 80px;
+  min-height: 120px;
   padding: 5px;
   box-sizing: border-box
 }
@@ -62,8 +62,7 @@
   box-sizing: border-box
 }
 .card_title{
-  margin: 0;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: bold;
   display: inline-block;
   white-space: nowrap;
@@ -71,19 +70,19 @@
   text-overflow: ellipsis;
 }
 .card_desc{
-  margin: 5px 0 0;
-  font-size: 11px;
+  margin: 10px 0 0;
+  margin-bottom: 10px;
+  font-size: 13px;
   display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
   /* 여러 줄 자르기 추가 스타일 */
   white-space: normal;
-  line-height: 1;
-  height: 3em;
+  line-height: 1.2;
 }
 .card_provider {
   margin: 5px 0 0;
-  font-size: 10px
+  font-size: 11px
 }
 .borderTop{
   border-top: 1px solid rgba(79, 73, 75, 0.28);
