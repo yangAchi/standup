@@ -63,6 +63,18 @@ export default class FirebaseDao {
     // });
   }
 
+  list2(pagesize,callback){
+    console.log("callback33");
+    // return new Promise(resolve=>{
+      firebase.database().ref('category')
+              .orderByKey().limitToLast(pagesize)
+              .on('value',(articles)=>{
+                callback(articles);
+              })
+
+    // });
+  }
+
   getArticle(key){
     return new Promise(resolve=>{
       firebase.database().ref('/posts/'+key)

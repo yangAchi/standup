@@ -28,7 +28,7 @@ class Editor extends Component {
       content : undefined,
       cardInfo : undefined,
       tags : [],
-      value: 'reactjs'
+      value: 'untitiled'
     };
   }
 
@@ -189,13 +189,12 @@ class Editor extends Component {
             onClick={this.handleSubmit}><span>스탠드업!</span></button>
 
 
-
-
           <div className="Category2">
             <Dropdown value={this.state.value}
               onChange={this.handleChange.bind(this)}
               options={[ '[SELECT]','aaa', 'bbb', 'ccc', 'ddd' ]} />
           </div>
+
           <div>
            <AddCategory />
           </div>

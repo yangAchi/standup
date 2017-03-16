@@ -30,7 +30,7 @@ export function searchArticles(category) {
 
 export function loadCategory() {
   return (dispatch) => {
-    dao.list(25,(articles)=>dispatch(getArticles(articles)));
+    dao.list2(25,(articles)=>dispatch(getArticles(articles,{type:CATEGORY_ITEM})));
   };
 }
 

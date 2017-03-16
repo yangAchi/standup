@@ -57,13 +57,10 @@ export default function getArticles(state,action){
     let articles_of_tag = [];
     // let cUser = firebase.auth().currentUser;
     action.articles.forEach(function(article){
-      if(article.categoryItem) {
           articles_of_tag.push(article);
-          console.log(article.categorItem);
-          return;
-      }
-
+          console.log(article.categoryItem);
     });
+    //console.log("1111111");
     console.log(articles_of_tag);
     return Object.assign({},state,{articles:articles_of_tag});
 
