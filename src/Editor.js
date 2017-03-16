@@ -1,7 +1,7 @@
 /*global firebaseui,firebase*/
 import React, { Component } from 'react';
 import './Editor.css';
-import Profile from './Profile';
+
 import Card from './Card';
 import getEmbedly from './EmbedlyDao';
 import firebase from 'firebase';
@@ -151,7 +151,7 @@ class Editor extends Component {
           <div className="today_title">
             무엇을 공유할까요?
           </div>
-          <Profile/>
+          
         </div>
         <div className="textEditor">
           <div className="innerEdit"
@@ -164,15 +164,15 @@ class Editor extends Component {
             ></div>
             <Card cardInfo={this.state.cardInfo}/>
         </div>
+        <Tags onDelete={this.tagDelete}
+          onAddition={this.tagAddition}
+          onDrag={this.tagDrag}
+          tags={this.state.tags}/>
         <div className="actionBar">
           <button className="upload"
             disabled={!this.hasValue(this.state.content)}
             onClick={this.handleSubmit}><span>스탠드업!</span></button>
         </div>
-        <Tags onDelete={this.tagDelete}
-          onAddition={this.tagAddition}
-          onDrag={this.tagDrag}
-          tags={this.state.tags}/>
       </div>
     );
   }

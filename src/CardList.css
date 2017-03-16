@@ -9,6 +9,7 @@ ul{
   text-align: left;
   background-color: white;
   border:1px solid #dddfe2;
+  margin-bottom: 10px;
 }
 .common_margin{
   margin: 15px;
@@ -16,6 +17,12 @@ ul{
 .grey_text{
   color:#666;
   font-size: 12
+}
+.card_content{
+  font-size: 16px;
+}
+.card_inner_content a{
+  text-decoration: none;
 }
 pre {
     white-space: pre-wrap;       /* Since CSS 2.1 */
@@ -28,4 +35,8 @@ pre {
 li.tag_list {
   float:left;
   margin-right : 10px;
+}
+a.tagList {
+  text-decoration: none;
+  /*color: blue;*/
 }

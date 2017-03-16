@@ -10,11 +10,12 @@
   margin: 10px;
   border-radius: 0 0 3px 3px;
   background-color: #f6f7f9;
+  margin-bottom: 60px;
 }
 
 .textEditor{
   width:100%;
-  min-height: 100px;
+  min-height: 250px;
   background-color: white;
   border-bottom: 1px solid #dddfe2;
 }
@@ -22,7 +23,7 @@
   text-align: left;
   color: #1d2129;
   padding:20px;
-  min-height: 90px;
+  min-height: 250px;
 }
 .actionBar{
   min-height: 40px;
@@ -31,9 +32,12 @@
   width:100px;
   height: 30px;
   margin: 5px;
+  margin-right: 5px;
+  margin-bottom: 10px;
   float:right;
   color: white;
-  background-color: #02B875;
+  /*background-color: #02B875;*/
+  background-color: #1c9b97;
   border-radius: 3px 3px 3px 3px;
   border: 0px;
 }

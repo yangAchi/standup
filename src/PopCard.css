@@ -1,7 +1,7 @@
 .card_pop{
   position:absolute;
   border: 1px solid #AAA;
-  top :115px;
+  /*top :115px;*/
   right:20px;
   padding: 10px;
   background-color: white;

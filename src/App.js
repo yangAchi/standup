@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import logo from './stand_up_logo.png';
+import logo from './img/stand_up_logo2.png';
 import './App.css';
 import Editor from './Editor';
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import {updateArticle, loadArticles} from './actions/Article'
+import {updateArticle} from './actions/Article'
 import Search from './Search'
-
+import Profile from './Profile';
 /*
-* App Component
-*/
+* App Component*/
 class App extends Component {
   constructor(){
     super();
@@ -39,9 +38,10 @@ class App extends Component {
           <Link to="/">
             <img src={logo} className="App-logo" alt="logo" />
           </Link>
+          <Profile/>
         </div>
-        <Editor submit={this.submit}/>
         <Search />
+        <Editor submit={this.submit}/>
         {this.props.children}
       </div>
     );

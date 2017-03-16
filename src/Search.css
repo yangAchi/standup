@@ -1,22 +1,30 @@
 .tagEdit {
   text-align: left;
   padding-left:10px; 
+  margin-top : 20px;
+  margin-bottom : 20px;
 }
 
 .innerTagEdit {
   text-align: left;
-  width: 200px;
+  height: 27px;
+  margin: 5px;
+  width: 83%;
   border-radius: 2px;
   display: inline-block;
-  border:1px solid black;
+  border:1px solid #dddfe2;
+  padding-left: 5px;
+  background-color: white;
 }
 
 .tagButton {
-	width:100px;
+  align-content: right;
+  width: 10%;
 	height: 30px;
 	margin: 5px;
+	margin-left: 15px;
 	color: white;
-	background-color: #02B875;
+	background-color: #1c9b97;
 	border-radius: 3px 3px 3px 3px;
 	border: 0px;
 }

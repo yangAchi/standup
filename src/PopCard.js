@@ -16,13 +16,13 @@ class PopCard extends Component{
       return(
         <div className="card_pop">
           <div className="card_pop_arrow"/>
-          <div>
+          <div className="card_inner_content">
           <a href="#" onClick={()=>dispatch(userArticles())}>내 글만 보기</a>
           </div>
-          <div>
+          <div className="card_inner_content">
           <a href="#" onClick={()=>dispatch(loadArticles())}>전체 글 보기</a>
           </div>
-          <div>
+          <div className="card_inner_content">
             <a href="#" onClick={()=>this.logout()}>로그아웃</a>
           </div>
         </div>);

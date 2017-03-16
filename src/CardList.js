@@ -27,7 +27,7 @@ class CardList extends Component {
 
     return(<li className="list_row" key={item.key}>
               <div className="common_margin">
-              <pre className="common_margin grey_text">{item.content}</pre>
+              <pre className="common_margin grey_text card_content">{item.content}</pre>
               {
                 (item.cardInfo)?<Card cardInfo={item.cardInfo}/>:""
               }

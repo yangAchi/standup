@@ -31,7 +31,7 @@ class Profile extends Component{
       return(
           <span>
             <div className="profile_name">
-              <a href="#" onClick={()=>this.popProfile()}>{user.displayName}</a>
+              <a href="#" className="profile_name_color" onClick={()=>this.popProfile()}>{user.displayName}</a>
             </div>
             <div className="profile_img_wrap">
               <img src={user.photoURL} alt="profiles" className="profile_img"/>
