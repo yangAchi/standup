@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './stand_up_logo.png';
+import logo from './img/stand_up_logo.png';
 import './App.css';
 import Editor from './Editor';
 import { connect } from 'react-redux'
