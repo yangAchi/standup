@@ -28,7 +28,8 @@ class AddCategory extends Component{
   loadCategory(){
       console.log('loadCategory');
       //items.push(this.refs.myText.textContent);
-      this.props.submitItems(this.refs.myText.textContent);
+      //items.push('koo');
+      this.props.submitItems(items);
       //console.log(items);
   }
 

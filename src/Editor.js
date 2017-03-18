@@ -41,13 +41,12 @@ class Editor extends Component {
     this.submitItems = this.submitItems.bind(this);
   }
 
-  submitItems(categoryItem){
-    //console.log(categoryItems);
-    //Items=categoryItems;
-    Items.push(categoryItem);
-    console.log(categoryItem);
-    console.log('categoryItem');
-    this.forceUpdate();  //rerendering?
+  //AddCategory.js (child)
+  submitItems(categoryItems){
+    categoryItems.forEach(function(item){
+      Items.push(item);
+    });
+    this.forceUpdate();  //re-rendering?
   }
 
   handleChange (e) {
