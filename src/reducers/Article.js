@@ -1,8 +1,9 @@
 /*global firebaseui,firebase*/
 import {USER,TAGS,CATEGORY} from '../constants';
 import firebase from 'firebase';
-export default function getArticles(state,action){
 
+
+export default function getArticles(state,action){
   if(action.type === USER){
     console.log("USER Reducer");
     let articles_of_mine = [];
@@ -34,26 +35,22 @@ export default function getArticles(state,action){
     return Object.assign({},state,{articles:articles_of_tag});
   }
   else if(action.type === CATEGORY){
-    console.log("koo");
+    console.log("CATEGORY Reducer");
+    let articles_of_category = [];
 
-    //console.log("TAGS Reducer");
-    let articles_of_tag = [];
-    // let cUser = firebase.auth().currentUser;
     action.articles.forEach(function(article){
       if(article.value===action.category) {
-          articles_of_tag.push(article);
+          articles_of_category.push(article);
           return;
       }
 
     });
-    console.log(articles_of_tag);
-    return Object.assign({},state,{articles:articles_of_tag});
+    console.log(articles_of_category);
+    return Object.assign({},state,{articles:articles_of_category});
 
   }
-  else if(action.type!==action.categoryItem)
-  {
-    console.log("ALL Reducer");
-    console.log(action);
-    return Object.assign({},state,action);
-  }
+
+  console.log("ALL Reducer");
+  console.log(action);
+  return Object.assign({},state,action);
 }
