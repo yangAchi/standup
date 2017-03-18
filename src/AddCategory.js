@@ -1,5 +1,4 @@
 import React ,{Component} from 'react';
-import {tagArticles} from './actions/Article';
 import {connect} from 'react-redux';
 import './AddCategory.css'
 import FirebaseDao from './FirebaseDao'

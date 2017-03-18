@@ -32,7 +32,7 @@ class Editor extends Component {
   }
 
   handleChange (e) {
-      if(e==='[SELECT]')
+      if(e==='***** Category *****')
          this.setState({value:'untitled'});
       else
          this.setState({value: e});
@@ -115,7 +115,6 @@ class Editor extends Component {
     else return false;
   }
   handleSubmit(e){
-    console.log("handleSubmit");
     e.preventDefault();
     this.props.submit(this.getArticle());
 
@@ -180,15 +179,16 @@ class Editor extends Component {
             disabled={!this.hasValue(this.state.content)}
             onClick={this.handleSubmit}><span>스탠드업!</span></button>
 
-            <div>
-             <AddCategory />
-            </div>
+
+        <div>
+          <AddCategory />
+        </div>
 
 
-          <div className="Category2">
+          <div className="category_list">
             <Dropdown value={this.state.value}
               onChange={this.handleChange.bind(this)}
-              options={[ '[SELECT]','aaa', 'bbb', 'ccc', 'ddd' ]} />
+              options={[ '***** Category *****','aaa', 'bbb', 'ccc', 'ddd' ]} />
           </div>
         </div>
 

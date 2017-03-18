@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Card from './Card'
 import './CardList.css'
 import {connect} from 'react-redux'
-import {loadArticles,tagArticles, searchArticles} from './actions/Article'
+import {loadArticles,tagArticles} from './actions/Article'
 
 
 class CardList extends Component {
@@ -25,17 +25,15 @@ class CardList extends Component {
                 })
     }
 
-    var category1="";
-    if(item.value){
-      //console.log(item.value);
-      category1="["+item.value+"]";
-
+    var categoryItem="";
+    if(item.value){   //value는 categoryItem
+      categoryItem="["+item.value+"]";
     }
 
 
     return(<li className="list_row" key={item.key}>
               <ul>
-                {category1}
+                {categoryItem}
               </ul>
               <div className="common_margin">
               <pre className="common_margin grey_text">{item.content}</pre>

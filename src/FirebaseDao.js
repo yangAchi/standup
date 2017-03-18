@@ -21,9 +21,10 @@ export default class FirebaseDao {
   insert(postData){
     return firebase.database().ref().child('posts').push(postData);
   }
+
   update(key,postData){
-    console.log("update");
-    console.log(postData);
+    //console.log("update");
+    //console.log(postData);
     var updates = {};
     updates['/posts/' + key] = postData;
     updates['/user-posts/genji/' + key] = postData;
@@ -37,6 +38,7 @@ export default class FirebaseDao {
     updates['/category/' + key] = postData;
     return firebase.database().ref().update(updates);
   }
+
   remove(key){
     return new Promise(resolve=>{
       firebase.database().ref('/posts/').child(key).remove();
@@ -44,9 +46,11 @@ export default class FirebaseDao {
       resolve(key);
     });
   }
+
   off(){
     return firebase.database().ref().off();
   }
+  
   newKey(){
     return firebase.database().ref().child('posts').push().key;
   }

@@ -1,5 +1,5 @@
 import React ,{Component} from 'react';
-import {searchArticles, loadArticles} from './actions/Article';
+import {searchArticles} from './actions/Article';
 import {connect} from 'react-redux';
 import Dropdown from 'react-drop-down';
 
