@@ -1,11 +1,10 @@
-/*global firebaseui,firebase*/
 import React, { Component } from 'react';
 import './Editor.css';
 import Profile from './Profile';
 import Card from './Card';
 import getEmbedly from './EmbedlyDao';
 import firebase from 'firebase';
-import Tags from './tags';
+import Tags from './Tags';
 import Dropdown from 'react-drop-down';
 import AddCategory from './AddCategory';
 
@@ -28,7 +27,7 @@ class Editor extends Component {
       content : undefined,
       cardInfo : undefined,
       tags : [],
-      value: 'reactjs'
+      value: 'untitiled'
     };
   }
 
@@ -118,15 +117,6 @@ class Editor extends Component {
     e.preventDefault();
     this.props.submit(this.getArticle());
 
-    /*
-    this.setState({
-      embedlyUrl : undefined,
-      content : undefined,
-      cardInfo : undefined,
-      tags : [],
-      category : undefined
-    });
-    */
     this.refs.innerText.textContent = "";
   }
   detectURL(text){

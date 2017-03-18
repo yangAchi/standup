@@ -1,16 +1,14 @@
-/*global firebase*/
 import React ,{Component} from 'react';
-// import './PopCard.css';
 import {searchArticles} from './actions/Article';
 import {connect} from 'react-redux';
 import Dropdown from 'react-drop-down';
 
 
 class SearchCategory extends Component{
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.state={
-      value : undefined
+      value : 'untitiled'
     };
     this.searchCategory = this.searchCategory.bind(this);
   }
@@ -18,7 +16,6 @@ class SearchCategory extends Component{
   searchCategory(e) {
     const {dispatch} = this.props;
     dispatch(searchArticles(e));
-    //console.log(e);
   }
 
   render(){
@@ -29,7 +26,6 @@ class SearchCategory extends Component{
           options={['[SELECT]', 'aaa', 'bbb', 'ccc', 'ddd' ]} />
       </div>
       );
-
   }
 }
 export default connect()(SearchCategory)

@@ -1,6 +1,4 @@
-/*global firebase*/
 import React ,{Component} from 'react';
-// import './PopCard.css';
 import {tagArticles} from './actions/Article';
 import {connect} from 'react-redux';
 import './AddCategory.css'

@@ -11,10 +11,10 @@ class Search extends Component{
     this.state={
       tag : undefined
     };
-    this.serchTag = this.serchTag.bind(this);
+    this.searchTag = this.searchTag.bind(this);
   }
 
-  serchTag() {
+  searchTag() {
     const {dispatch} = this.props;
     dispatch(tagArticles(this.refs.myText.textContent));
     this.refs.myText.textContent = "";
@@ -28,7 +28,7 @@ class Search extends Component{
               placeholder="Search"
               ref="myText"></div>
         <button className="tagButton"
-          onClick={this.serchTag}>
+          onClick={this.searchTag}>
           <span>검색</span>
         </button>
       </div>

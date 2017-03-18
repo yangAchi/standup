@@ -10,7 +10,7 @@ div.ReactTags__tagInput {
   border-radius: 2px;
   display: inline-block;
 }
-div.ReactTags__tagInput input, 
+div.ReactTags__tagInput input,
 div.ReactTags__tagInput input:focus {
   margin: 0;
   font-size: 12px;
