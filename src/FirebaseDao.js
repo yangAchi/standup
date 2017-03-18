@@ -39,6 +39,10 @@ export default class FirebaseDao {
     return firebase.database().ref().update(updates);
   }
 
+  load(){
+    return firebase.database().ref().child('category');
+  }
+
   remove(key){
     return new Promise(resolve=>{
       firebase.database().ref('/posts/').child(key).remove();
@@ -50,7 +54,7 @@ export default class FirebaseDao {
   off(){
     return firebase.database().ref().off();
   }
-  
+
   newKey(){
     return firebase.database().ref().child('posts').push().key;
   }
@@ -66,6 +70,13 @@ export default class FirebaseDao {
               })
     // });
   }
+
+  list2(pagesize){
+    return firebase.database().ref('/category/')
+            .orderByKey().limitToLast(pagesize);
+  }
+
+
   getArticle(key){
     return new Promise(resolve=>{
       firebase.database().ref('/posts/'+key)
