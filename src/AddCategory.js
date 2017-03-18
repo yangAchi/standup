@@ -4,7 +4,7 @@ import './AddCategory.css'
 import FirebaseDao from './FirebaseDao'
 import config from './config'
 
-
+var Items=[];
 
 class AddCategory extends Component{
   constructor(){
@@ -28,18 +28,17 @@ class AddCategory extends Component{
   loadCategory(){
       console.log('loadCategory');
 
-     let items=[];
       this.dao.list2(25).on('value',(dataSnapshots)=>{
-       //var items = [];
+      var items = [];
        dataSnapshots.forEach(function(dataSnapshot){
-         //var item = dataSnapshot.val();
+         var item = dataSnapshot.val();
          //item['key'] = dataSnapshot.key;
-         //console.log(dataSnapshot.val());
-         items.push(dataSnapshot.val());
+         console.log(dataSnapshot.val());
+         items.push(item);
        })
+    
+       this.props.submitItems(items);
      });
-     console.log(items);
-      this.props.submitItems(items);
   }
 
   render(){

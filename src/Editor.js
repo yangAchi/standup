@@ -10,10 +10,11 @@ import AddCategory from './AddCategory';
 import FirebaseDao from './FirebaseDao'
 import config from './config'
 
-let Items=['***** Category *****', 'aaa', 'bbb'];
-Items.push('ccc');
-Items.push('ddd');
-Items.push('eee');
+let Items=[];
+//let Items=['***** Category *****', 'aaa', 'bbb'];
+//Items.push('ccc');
+//Items.push('ddd');
+//Items.push('eee');
 
 class Editor extends Component {
   constructor(props){
@@ -43,11 +44,7 @@ class Editor extends Component {
 
   //AddCategory.js
   submitItems(categoryItems){
-    console.log(categoryItems);
-    categoryItems.forEach(function(item){
-      Items.push(item);
-      console.log(item);
-    });
+    Items=categoryItems;
     this.forceUpdate();  //re-rendering?
   }
 
