@@ -2,7 +2,10 @@ import React ,{Component} from 'react';
 import {searchArticles} from './actions/Article';
 import {connect} from 'react-redux';
 import Dropdown from 'react-drop-down';
+import FirebaseDao from './FirebaseDao'
+import config from './config'
 
+let Items=[];
 
 class SearchCategory extends Component{
   constructor(){
@@ -11,6 +14,30 @@ class SearchCategory extends Component{
       value : 'untitled'
     };
     this.handleChange = this.handleChange.bind(this);
+    this.submitItems = this.submitItems.bind(this);
+    this.dao = new FirebaseDao(config);
+  }
+
+  componentWillMount() {
+    this.dao.list2(50).on('value',(dataSnapshots)=>{
+      var items = [];
+      dataSnapshots.forEach(function(dataSnapshot){
+        var item = dataSnapshot.val();
+        console.log(dataSnapshot.val());
+        items.push(item);
+      })
+      items.reverse();
+      this.setState({value: items[0]});
+      this.submitItems(items);
+    });
+  }
+  componentWillUnmount(){
+    this.dao.off();
+  }
+  //AddCategory.js
+  submitItems(categoryItems){
+    Items=categoryItems;
+    this.forceUpdate();  //re-rendering?
   }
 
   handleChange(e) {
@@ -23,7 +50,7 @@ class SearchCategory extends Component{
       <div className="searchCategory">
         <Dropdown value={this.state.value}
           onChange={this.handleChange.bind(this)}
-          options={['[SELECT]', 'aaa', 'bbb', 'ccc', 'ddd' ]} />
+          options={Items} />
       </div>
       );
   }
