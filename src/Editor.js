@@ -27,13 +27,15 @@ class Editor extends Component {
       content : undefined,
       cardInfo : undefined,
       tags : [],
-      value: 'untitiled'
+      value: 'untitled'
     };
   }
 
   handleChange (e) {
-      this.setState({value: e})
-      console.log(e);
+      if(e==='[SELECT]')
+         this.setState({value:'untitled'});
+      else
+         this.setState({value: e});
     }
 
   getForcedState(embedlyUrl,content){

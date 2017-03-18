@@ -1,5 +1,5 @@
 .categoryEdit {
-  float : right;
+  float : left;
   text-align: left;
   padding-left:10px;
 }
@@ -13,8 +13,8 @@
 }
 
 .categoryButton {
-	width:100px;
-	height: 30px;
+	width:50px;
+	height: 20px;
 	margin: 5px;
 	color: white;
 	background-color: #222;

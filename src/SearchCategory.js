@@ -1,5 +1,5 @@
 import React ,{Component} from 'react';
-import {searchArticles} from './actions/Article';
+import {searchArticles, loadArticles} from './actions/Article';
 import {connect} from 'react-redux';
 import Dropdown from 'react-drop-down';
 
@@ -8,12 +8,12 @@ class SearchCategory extends Component{
   constructor(){
     super();
     this.state={
-      value : 'untitiled'
+      value : 'untitled'
     };
-    this.searchCategory = this.searchCategory.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  searchCategory(e) {
+  handleChange(e) {
     const {dispatch} = this.props;
     dispatch(searchArticles(e));
   }
@@ -22,7 +22,7 @@ class SearchCategory extends Component{
     return(
       <div className="searchCategory">
         <Dropdown value={this.state.value}
-          onChange={this.searchCategory.bind(this)}
+          onChange={this.handleChange.bind(this)}
           options={['[SELECT]', 'aaa', 'bbb', 'ccc', 'ddd' ]} />
       </div>
       );
