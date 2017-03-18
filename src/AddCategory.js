@@ -4,11 +4,14 @@ import './AddCategory.css'
 import FirebaseDao from './FirebaseDao'
 import config from './config'
 
+let items=[];
+
 class AddCategory extends Component{
   constructor(){
     super();
     this.dao = new FirebaseDao(config);
     this.addCategory = this.addCategory.bind(this);
+    this.loadCategory = this.loadCategory.bind(this);
   }
 
   addCategory() {
@@ -18,6 +21,15 @@ class AddCategory extends Component{
           let key = this.dao.newKey();
           this.dao.update2( key, categoryItem);
     }
+
+    this.loadCategory();
+  }
+
+  loadCategory(){
+      console.log('loadCategory');
+      //items.push(this.refs.myText.textContent);
+      this.props.submitItems(this.refs.myText.textContent);
+      //console.log(items);
   }
 
   render(){

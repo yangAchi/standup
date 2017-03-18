@@ -7,6 +7,13 @@ import firebase from 'firebase';
 import Tags from './Tags';
 import Dropdown from 'react-drop-down';
 import AddCategory from './AddCategory';
+import FirebaseDao from './FirebaseDao'
+import config from './config'
+
+let Items=['***** Category *****', 'aaa', 'bbb'];
+Items.push('ccc');
+Items.push('ddd');
+Items.push('eee');
 
 class Editor extends Component {
   constructor(props){
@@ -21,6 +28,7 @@ class Editor extends Component {
     this.tagDelete  = this.tagDelete.bind(this);
     this.tagAddition  = this.tagAddition.bind(this);
     this.tagDrag  = this.tagDrag.bind(this);
+    this.dao = new FirebaseDao(config);
 
     this.state={
       embedlyUrl : undefined,
@@ -29,6 +37,17 @@ class Editor extends Component {
       tags : [],
       value: 'untitled'
     };
+
+    this.submitItems = this.submitItems.bind(this);
+  }
+
+  submitItems(categoryItem){
+    //console.log(categoryItems);
+    //Items=categoryItems;
+    Items.push(categoryItem);
+    console.log(categoryItem);
+    console.log('categoryItem');
+    this.forceUpdate();  //rerendering?
   }
 
   handleChange (e) {
@@ -109,17 +128,20 @@ class Editor extends Component {
     article.value=this.state.value;
     return article;
   }
+
   hasValue(value){
     if((value && (typeof value) === "string"))
       return (!value)?false:(value.trim()===""?false:true);
     else return false;
   }
+
   handleSubmit(e){
     e.preventDefault();
     this.props.submit(this.getArticle());
 
     this.refs.innerText.textContent = "";
   }
+
   detectURL(text){
     var urls = text.match(/(https?:\/\/[^\s]+)/g)||text.match(/(www.[^\s]+)/g);
     if(urls && urls.length>0) return urls[0];
@@ -151,6 +173,9 @@ class Editor extends Component {
     this.setState({ tags: tags });
   }
 
+
+
+
   render() {
     return (
       <div className="wrapEditor">
@@ -181,14 +206,14 @@ class Editor extends Component {
 
 
         <div>
-          <AddCategory />
+          <AddCategory submitItems={this.submitItems}/>
         </div>
 
 
           <div className="category_list">
             <Dropdown value={this.state.value}
               onChange={this.handleChange.bind(this)}
-              options={[ '***** Category *****','aaa', 'bbb', 'ccc', 'ddd' ]} />
+              options={Items} />
           </div>
         </div>
 
