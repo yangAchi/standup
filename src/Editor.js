@@ -11,10 +11,6 @@ import FirebaseDao from './FirebaseDao'
 import config from './config'
 
 let Items=[];
-//let Items=['***** Category *****', 'aaa', 'bbb'];
-//Items.push('ccc');
-//Items.push('ddd');
-//Items.push('eee');
 
 class Editor extends Component {
   constructor(props){
@@ -42,6 +38,22 @@ class Editor extends Component {
     this.submitItems = this.submitItems.bind(this);
   }
 
+  componentWillMount() {
+    this.dao.list2(50).on('value',(dataSnapshots)=>{
+      var items = [];
+      dataSnapshots.forEach(function(dataSnapshot){
+        var item = dataSnapshot.val();
+        console.log(dataSnapshot.val());
+        items.push(item);
+      })
+      items.reverse();
+      this.setState({value: items[0]});
+      this.submitItems(items);
+    });
+  }
+  componentWillUnmount(){
+    this.dao.off();
+  }
   //AddCategory.js
   submitItems(categoryItems){
     Items=categoryItems;
@@ -49,11 +61,8 @@ class Editor extends Component {
   }
 
   handleChange (e) {
-      if(e==='***** Category *****')
-         this.setState({value:'untitled'});
-      else
-         this.setState({value: e});
-    }
+    this.setState({value: e});
+  }
 
   getForcedState(embedlyUrl,content){
     return new Promise(resolve=>{

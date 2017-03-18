@@ -27,16 +27,14 @@ class AddCategory extends Component{
 
   loadCategory(){
       console.log('loadCategory');
-
-      this.dao.list2(25).on('value',(dataSnapshots)=>{
+      this.dao.list2(50).on('value',(dataSnapshots)=>{
       var items = [];
        dataSnapshots.forEach(function(dataSnapshot){
          var item = dataSnapshot.val();
-         //item['key'] = dataSnapshot.key;
          console.log(dataSnapshot.val());
          items.push(item);
        })
-    
+       items.reverse();
        this.props.submitItems(items);
      });
   }
