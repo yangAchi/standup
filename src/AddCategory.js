@@ -8,21 +8,16 @@ class AddCategory extends Component{
   constructor(){
     super();
     this.dao = new FirebaseDao(config);
-
-    this.state={
-      category : undefined
-    };
     this.addCategory = this.addCategory.bind(this);
   }
 
   addCategory() {
-    let article = {};
-    article.categoryItem = this.refs.myText.textContent;
-    if(article){
+    let categoryItem = {};
+    categoryItem = this.refs.myText.textContent;
+    if(categoryItem){
           let key = this.dao.newKey();
-          let updated = this.dao.update2( key, article );
-          return updated;
-        }
+          this.dao.update2( key, categoryItem);
+    }
   }
 
   render(){
@@ -31,7 +26,9 @@ class AddCategory extends Component{
         <div className="innerCategoryEdit"
               contentEditable="true"
               placeholder="Add category item"
-              ref="myText"></div>
+              ref="myText">
+        </div>
+
         <button className="categoryButton"
           onClick={this.addCategory}>
           <span>ADD</span>
