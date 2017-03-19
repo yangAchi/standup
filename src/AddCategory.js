@@ -21,7 +21,8 @@ class AddCategory extends Component{
           let key = this.dao.newKey();
           this.dao.update2( key, categoryItem);
     }
-
+    this.refs.myText.textContent = "";
+    this.forceUpdate();  //re-rendering?
     this.loadCategory();
   }
 

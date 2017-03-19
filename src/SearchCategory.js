@@ -13,7 +13,7 @@ class SearchCategory extends Component{
     this.state={
       value : 'untitled'
     };
-    this.handleChange = this.handleChange.bind(this);
+    //this.handleChange = this.handleChange.bind(this);
     this.submitItems = this.submitItems.bind(this);
     this.dao = new FirebaseDao(config);
   }
@@ -34,6 +34,7 @@ class SearchCategory extends Component{
   componentWillUnmount(){
     this.dao.off();
   }
+
   //AddCategory.js
   submitItems(categoryItems){
     Items=categoryItems;
@@ -41,6 +42,7 @@ class SearchCategory extends Component{
   }
 
   handleChange(e) {
+    this.setState({value: e});
     const {dispatch} = this.props;
     dispatch(searchArticles(e));
   }
