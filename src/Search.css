@@ -9,7 +9,7 @@
   text-align: left;
   height: 27px;
   margin: 5px;
-  width: 83%;
+  width: 80%;
   border-radius: 2px;
   display: inline-block;
   border:1px solid #dddfe2;
@@ -18,11 +18,11 @@
 }
 
 .tagButton {
-  align-content: right;
   width: 10%;
+  /*min-width: 100px;*/
 	height: 30px;
 	margin: 5px;
-	margin-left: 15px;
+	/*margin-left: 15px;*/
 	color: white;
 	background-color: #1c9b97;
 	border-radius: 3px 3px 3px 3px;

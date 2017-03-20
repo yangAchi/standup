@@ -4,7 +4,11 @@
 }
 
 .App-logo {
-  height: 45px;
+  height: 35px;
+  vertical-align: -webkit-baseline-middle;
+}
+.App-logo-link{
+  vertical-align: -webkit-baseline-middle;
 }
 
 .App-header {
@@ -19,8 +23,8 @@
 
 .App-intro {
   font-size: large;
-
 }
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

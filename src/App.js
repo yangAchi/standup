@@ -35,7 +35,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <Link to="/">
+          <Link to="/" className="App-logo-link">
             <img src={logo} className="App-logo" alt="logo" />
           </Link>
           <Profile/>
