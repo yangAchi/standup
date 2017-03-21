@@ -6,6 +6,7 @@ import Card from './Card';
 import getEmbedly from './EmbedlyDao';
 import firebase from 'firebase';
 import Tags from './tags';
+import Dropdown from 'react-drop-down';
 
 class Editor extends Component {
   constructor(props){
@@ -24,24 +25,34 @@ class Editor extends Component {
       embedlyUrl : undefined,
       content : undefined,
       cardInfo : undefined,
-      tags : []
+      tags : [],
+      value:'untitled'
     };
   }
+
+  handleChange (e) {
+   this.setState({value: e});
+ }
+
   getForcedState(embedlyUrl,content){
     return new Promise(resolve=>{
       if(embedlyUrl){
         getEmbedly(embedlyUrl).then((response)=>{
+          let category=this.state.value;
           let cardInfo = Object.assign({},response.data);
           resolve({
             embedlyUrl : embedlyUrl,
             content : content,
-            cardInfo : cardInfo
+            cardInfo : cardInfo,
+            category : category
+
           });
         }).catch((error)=>{
           resolve({
             embedlyUrl : undefined,
             content : undefined,
-            cardInfo : undefined
+            cardInfo : undefined,
+            category : undefined
           });
         });
       }else{
@@ -92,6 +103,7 @@ class Editor extends Component {
       article.cardInfo = this.state.cardInfo;
     }
     article.tags = this.state.tags;
+    article.value = this.state.value;
     return article;
   }
   hasValue(value){
@@ -103,13 +115,6 @@ class Editor extends Component {
     console.log("handleSubmit");
     e.preventDefault();
     this.props.submit(this.getArticle());
-
-    this.setState({
-      embedlyUrl : undefined,
-      content : undefined,
-      cardInfo : undefined,
-      tags : []
-    });
 
     this.refs.innerText.textContent = "";
   }
@@ -145,13 +150,16 @@ class Editor extends Component {
   }
 
   render() {
+    let Items=[];
+    Items.push('aaa');
+    Items.push('bbb');
     return (
       <div className="wrapEditor">
         <div className="editor_header">
           <div className="today_title">
             무엇을 공유할까요?
           </div>
-          
+
         </div>
         <div className="textEditor">
           <div className="innerEdit"
@@ -173,6 +181,12 @@ class Editor extends Component {
             disabled={!this.hasValue(this.state.content)}
             onClick={this.handleSubmit}><span>스탠드업!</span></button>
         </div>
+
+        <div className="category_list">
+           <Dropdown value={this.state.value}
+             onChange={this.handleChange.bind(this)}
+             options={Items} />
+         </div>
       </div>
     );
   }
