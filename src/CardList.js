@@ -25,7 +25,16 @@ class CardList extends Component {
                 })
     }
 
+    var categoryItem="";
+    if(item.value){
+      categoryItem="["+item.value+"]";
+    }
+
+
     return(<li className="list_row" key={item.key}>
+              <ul>
+                {categoryItem}
+              </ul>
               <div className="common_margin">
               <pre className="common_margin grey_text card_content">{item.content}</pre>
               {
