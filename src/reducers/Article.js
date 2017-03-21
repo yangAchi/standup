@@ -1,5 +1,5 @@
 /*global firebaseui,firebase*/
-import {USER,TAGS} from '../constants';
+import {USER,TAGS,CATEGORY} from '../constants';
 import firebase from 'firebase';
 export default function getArticles(state,action){
 
@@ -32,6 +32,20 @@ export default function getArticles(state,action){
     });
     console.log(articles_of_tag);
     return Object.assign({},state,{articles:articles_of_tag});
+  }
+  else if(action.type === CATEGORY){
+    console.log("CATEGORY Reducer");
+    let articles_of_category = [];
+
+    action.articles.forEach(function(article){
+      if(article.value===action.category) {
+          articles_of_category.push(article);
+          return;
+      }
+
+    });
+    console.log(articles_of_category);
+    return Object.assign({},state,{articles:articles_of_category});
   }
   console.log("ALL Reducer");
   console.log(action);

@@ -7,6 +7,8 @@ import { Link } from 'react-router'
 import {updateArticle} from './actions/Article'
 import Search from './Search'
 import Profile from './Profile';
+import SearchCategory from './SearchCategory'
+
 /*
 * App Component*/
 class App extends Component {
@@ -15,7 +17,7 @@ class App extends Component {
     this.submit = this.submit.bind(this);
     this.state = {
       opened : true,
-      sidebarOpen: false, 
+      sidebarOpen: false,
       sidebarDocked: false
     };
   }
@@ -35,6 +37,9 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
+        <div className="Category">
+           <SearchCategory />
+          </div>
           <Link to="/" className="App-logo-link">
             <img src={logo} className="App-logo" alt="logo" />
           </Link>
