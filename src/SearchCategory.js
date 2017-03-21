@@ -6,9 +6,6 @@ import FirebaseDao from './FirebaseDao'
 import config from './config'
 
 let Items=[];
-Items.push('aaa');
-Items.push('bbb');
-Items.push('888');
 
 class SearchCategory extends Component{
   constructor(){
@@ -17,10 +14,10 @@ class SearchCategory extends Component{
       value : 'untitled'
     };
 
-    //this.submitItems = this.submitItems.bind(this);
-    //this.dao = new FirebaseDao(config);
+    this.submitItems = this.submitItems.bind(this);
+    this.dao = new FirebaseDao(config);
   }
-  /*
+
   componentWillMount() {
     this.dao.list2(50).on('value',(dataSnapshots)=>{
       var items = [];
@@ -43,7 +40,7 @@ class SearchCategory extends Component{
     Items=categoryItems;
     this.forceUpdate();  //re-rendering?
   }
-  */
+
   handleChange(e) {
     this.setState({value: e});
     const {dispatch} = this.props;

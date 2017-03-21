@@ -28,6 +28,14 @@ export default class FirebaseDao {
     updates['/user-posts/genji/' + key] = postData;
     return firebase.database().ref().update(updates);
   }
+  // 카테고리를 위한 저장소
+  update2(key,postData){
+    console.log("update");
+    console.log(postData);
+    var updates = {};
+    updates['/category/' + key] = postData;
+    return firebase.database().ref().update(updates);
+  }
   remove(key){
     return new Promise(resolve=>{
       firebase.database().ref('/posts/').child(key).remove();
@@ -53,6 +61,11 @@ export default class FirebaseDao {
               })
     // });
   }
+
+  list2(pagesize){
+   return firebase.database().ref('/category/')
+           .orderByKey().limitToLast(pagesize);
+  }
   getArticle(key){
     return new Promise(resolve=>{
       firebase.database().ref('/posts/'+key)
@@ -64,7 +77,7 @@ export default class FirebaseDao {
   getUI(){
     return new firebaseui.auth.AuthUI(firebase.auth());
   }
-  
+
   logout(){
     return firebase.auth().signOut();
   }

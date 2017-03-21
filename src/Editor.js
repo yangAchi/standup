@@ -7,6 +7,11 @@ import getEmbedly from './EmbedlyDao';
 import firebase from 'firebase';
 import Tags from './tags';
 import Dropdown from 'react-drop-down';
+import AddCategory from './AddCategory';
+import FirebaseDao from './FirebaseDao'
+import config from './config'
+
+let Items=[];
 
 class Editor extends Component {
   constructor(props){
@@ -28,6 +33,31 @@ class Editor extends Component {
       tags : [],
       value:'untitled'
     };
+
+    this.submitItems = this.submitItems.bind(this);
+    this.dao = new FirebaseDao(config);
+  }
+
+  componentWillMount() {
+    this.dao.list2(50).on('value',(dataSnapshots)=>{
+      var items = [];
+      dataSnapshots.forEach(function(dataSnapshot){
+        var item = dataSnapshot.val();
+        console.log(dataSnapshot.val());
+        items.push(item);
+      })
+      items.reverse();
+      this.setState({value: items[0]});
+      this.submitItems(items);
+    });
+  }
+  componentWillUnmount(){
+    this.dao.off();
+  }
+  //AddCategory.js
+  submitItems(categoryItems){
+    Items=categoryItems;
+    this.forceUpdate();  //re-rendering?
   }
 
   handleChange (e) {
@@ -150,9 +180,6 @@ class Editor extends Component {
   }
 
   render() {
-    let Items=[];
-    Items.push('aaa');
-    Items.push('bbb');
     return (
       <div className="wrapEditor">
         <div className="editor_header">
@@ -181,7 +208,9 @@ class Editor extends Component {
             disabled={!this.hasValue(this.state.content)}
             onClick={this.handleSubmit}><span>스탠드업!</span></button>
         </div>
-
+        <div>
+          <AddCategory submitItems={this.submitItems}/>
+        </div>
         <div className="category_list">
            <Dropdown value={this.state.value}
              onChange={this.handleChange.bind(this)}
