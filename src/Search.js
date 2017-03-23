@@ -25,11 +25,11 @@ class Search extends Component{
       <div className="tagEdit">
         <div className="innerTagEdit"
               contentEditable="true"
-              placeholder="Search"
+              placeholder="Tag Search"
               ref="myText"></div>
         <button className="tagButton"
           onClick={this.serchTag}>
-          <span>검색</span>
+          <span>태그 검색</span>
         </button>
       </div>
       );

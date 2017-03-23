@@ -8,6 +8,9 @@ import {updateArticle, loadArticles} from './actions/Article'
 import Search from './Search'
 import Profile from './Profile';
 import SearchCategory from './SearchCategory'
+import burgerIcon from './img/burgerIcon.png';
+import { slide as Menu } from 'react-burger-menu'
+import './BurgerMenu.css';
 
 /*
 * App Component*/
@@ -37,6 +40,7 @@ class App extends Component {
   // }
   render() {
     return (
+
       <div className="App">
         <div className="App-header">
         <div className="Category">
