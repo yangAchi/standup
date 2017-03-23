@@ -9,7 +9,8 @@ import Search from './Search'
 import Profile from './Profile';
 import SearchCategory from './SearchCategory'
 import burgerIcon from './img/burgerIcon.png';
-
+import { slide as Menu } from 'react-burger-menu'
+import './BurgerMenu.css';
 
 /*
 * App Component*/
