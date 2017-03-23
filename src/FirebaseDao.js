@@ -4,30 +4,54 @@
 */
 import firebase from 'firebase';
 import firebaseui from 'firebaseui';
+import fcmpush from 'fcm-push';
+
+// 준영 : https://www.npmjs.com/package/fcm-push를 참고하였음.
 
 export default class FirebaseDao {
   constructor(config){
-    if(firebase.apps&&firebase.apps.length>0){
+    if(firebase.apps && firebase.apps.length>0){
       this.firebaseApp = firebase.apps[0];
-    }else{
+    } else {
       this.firebaseApp = firebase.initializeApp(config);
+      console.log(config.fcmServerKey);
+      this.fcm = new fcmpush(config.fcmServerKey);
     }
+    this.sendPushNotification = this.sendPushNotification.bind(this);
   }
-  getFirebaseApp(){
+  getFirebaseApp() {
     return this.firebaseApp;
   }
 
   insert(postData){
     return firebase.database().ref().child('posts').push(postData);
   }
+
+  sendPushNotification(postData) {
+    var message = {
+      to: '/topics/allDevice',
+      notification: {
+        title : 'New Uploads from "' + postData.user.displayName + '"!',
+        body : 'contents : ' + postData.content
+      }
+    };
+    this.fcm.send(message, function(err, response) {
+      if(err) {
+        console.log("Something has gone wrong!");
+      } else {
+        console.log("Push Success : ", response);
+      }
+    })
+  }
+
   update(key,postData){
-    console.log("update");
-    console.log(postData);
     var updates = {};
     updates['/posts/' + key] = postData;
-    updates['/user-posts/genji/' + key] = postData;
+    updates['/user-posts/'+ postData.user.displayName +'/' + key] = postData;
+    this.sendPushNotification(postData);
     return firebase.database().ref().update(updates);
   }
+
   // 카테고리를 위한 저장소
   update2(key,postData){
     console.log("update");
@@ -74,6 +98,7 @@ export default class FirebaseDao {
               })
     });
   }
+
   getUI(){
     return new firebaseui.auth.AuthUI(firebase.auth());
   }
