@@ -4,7 +4,8 @@ import {connect} from 'react-redux';
 import Dropdown from 'react-drop-down';
 import FirebaseDao from './FirebaseDao'
 import config from './config'
-
+import { slide as Menu } from 'react-burger-menu'
+import './BurgerMenu.css';
 let Items=[];
 
 class SearchCategory extends Component{
@@ -50,6 +51,11 @@ class SearchCategory extends Component{
   render(){
     return(
       <div className="searchCategory">
+        <Menu>
+             <a href="#" onClick={()=>this.handleChange(Items[0])}>{Items[0]}</a>
+             <a href="#" onClick={()=>this.handleChange(Items[1])}>{Items[1]}</a>
+        </Menu>
+
         <Dropdown value={this.state.value}
           onChange={this.handleChange.bind(this)}
           options={Items} />

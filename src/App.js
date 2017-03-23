@@ -8,9 +8,8 @@ import {updateArticle, loadArticles} from './actions/Article'
 import Search from './Search'
 import Profile from './Profile';
 import SearchCategory from './SearchCategory'
-import { slide as Menu } from 'react-burger-menu'
-import './BurgerMenu.css';
 import burgerIcon from './img/burgerIcon.png';
+
 
 /*
 * App Component*/
@@ -40,8 +39,8 @@ class App extends Component {
   // }
   render() {
     return (
+
       <div className="App">
-        <Menu pageWrapId={ "page-wrap" } customBurgerIcon={ <img src={ burgerIcon } /> }/>
         <div className="App-header">
         <div className="Category">
            <SearchCategory />
