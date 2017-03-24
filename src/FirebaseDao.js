@@ -1,7 +1,3 @@
-/*global firebaseui,firebase*/
-/*
-*  initializeFirebaseApp
-*/
 import firebase from 'firebase';
 import firebaseui from 'firebaseui';
 import fcmpush from 'fcm-push';
@@ -19,6 +15,7 @@ export default class FirebaseDao {
     }
     this.sendPushNotification = this.sendPushNotification.bind(this);
   }
+
   getFirebaseApp() {
     return this.firebaseApp;
   }
@@ -32,7 +29,7 @@ export default class FirebaseDao {
       to: '/topics/allDevice',
       notification: {
         title : 'New Uploads from "' + postData.user.displayName + '"!',
-        body : 'contents : ' + postData.content
+        body : postData.content
       }
     };
     this.fcm.send(message, function(err, response) {
@@ -53,13 +50,14 @@ export default class FirebaseDao {
   }
 
   // 카테고리를 위한 저장소
-  update2(key,postData){
+  updateCategory(key,postData){
     console.log("update");
     console.log(postData);
     var updates = {};
     updates['/category/' + key] = postData;
     return firebase.database().ref().update(updates);
   }
+
   remove(key){
     return new Promise(resolve=>{
       firebase.database().ref('/posts/').child(key).remove();
@@ -67,12 +65,15 @@ export default class FirebaseDao {
       resolve(key);
     });
   }
+
   off(){
     return firebase.database().ref().off();
   }
+
   newKey(){
     return firebase.database().ref().child('posts').push().key;
   }
+  
   /**
   * Promise를 호출하게 되면 이벤트가 등록된 부분이 사라기제 된다.
   */
@@ -86,10 +87,11 @@ export default class FirebaseDao {
     // });
   }
 
-  list2(pagesize){
+  listCategory(pagesize){
    return firebase.database().ref('/category/')
            .orderByKey().limitToLast(pagesize);
   }
+
   getArticle(key){
     return new Promise(resolve=>{
       firebase.database().ref('/posts/'+key)

@@ -2,10 +2,6 @@ import React from 'react';
 import { WithContext as ReactTags } from 'react-tag-input';
 import './Tags.css';
 
-//import Countries from 'country-list';
-
-//const countriesList = Countries().getData().map(t => t.name);
-
 const App = React.createClass({
     // getInitialState: function() {
     //     return {

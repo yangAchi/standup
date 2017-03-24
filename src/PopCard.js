@@ -1,16 +1,15 @@
-/*global firebase*/
-import React ,{Component} from 'react';
+import React, { Component } from 'react';
 import './PopCard.css';
-import {userArticles,loadArticles} from './actions/Article';
-import {connect} from 'react-redux';
+import { userArticles, loadArticles } from './actions/Article';
+import { connect } from 'react-redux';
 import firebase from 'firebase';
 
-class PopCard extends Component{
-  logout(){
+class PopCard extends Component {
+  logout() {
     firebase.auth().signOut();
   }
 
-  render(){
+  render() {
     const {dispatch} = this.props;
     if(this.props.isPop){
       return(
@@ -26,7 +25,7 @@ class PopCard extends Component{
             <a href="#" onClick={()=>this.logout()}>로그아웃</a>
           </div>
         </div>);
-    }else{
+    } else {
       return <div/>
     }
   }

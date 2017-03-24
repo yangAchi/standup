@@ -7,8 +7,7 @@ import './index.css';
 import Login from './Login';
 import NotFound from './NotFound';
 import CardList from './CardList';
-import {store, history} from './store/global';
-
+import { store, history } from './store/global';
 
 ReactDOM.render(
   <Provider store={store}>

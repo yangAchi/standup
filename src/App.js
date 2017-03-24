@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
-import logo from './img/stand_up_logo2.png';
+import logo from './img/logo.png';
 import './App.css';
 import Editor from './Editor';
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import {updateArticle, loadArticles} from './actions/Article'
+import { updateArticle, loadArticles } from './actions/Article'
 import Search from './Search'
 import Profile from './Profile';
 import SearchCategory from './SearchCategory'
-import burgerIcon from './img/burgerIcon.png';
-import { slide as Menu } from 'react-burger-menu'
-import './BurgerMenu.css';
 
 /*
 * App Component*/
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
     this.submit = this.submit.bind(this);
     this.state = {
@@ -24,8 +21,8 @@ class App extends Component {
       sidebarDocked: false
     };
   }
-  submit(article){
-    if(article){
+  submit(article) {
+    if(article) {
       const {dispatch} = this.props;
       dispatch(updateArticle(article));
 
@@ -41,19 +38,21 @@ class App extends Component {
   render() {
     return (
 
-      <div className="App">
-        <div className="App-header">
-        <div className="Category">
-           <SearchCategory />
-          </div>
-          <Link to="/" className="App-logo-link">
-            <img src={logo} className="App-logo" alt="logo" />
-          </Link>
-          <Profile/>
+      <div className="App" id="outer-container">
+        <SearchCategory />
+        <div id="page-wrap">
+          <div className="App-header">
+              <div className="Category">
+                </div>
+                <Link to="/" className="App-logo-link">
+                  <img src={logo} className="App-logo" alt="logo" />
+                </Link>
+                <Profile/>
+              </div>
+            <Search />
+          <Editor submit={this.submit}/>
+          {this.props.children}
         </div>
-        <Search />
-        <Editor submit={this.submit}/>
-        {this.props.children}
       </div>
     );
   }

@@ -1,33 +1,32 @@
-/*global firebase*/
-import React ,{Component} from 'react';
+import React, { Component } from 'react';
 import './Profile.css';
 import { Link } from 'react-router';
 import PopCard from './PopCard';
 import firebase from 'firebase';
 
-class Profile extends Component{
-  constructor(props){
+class Profile extends Component {
+  constructor(props) {
     super(props);
     this.state={
       user : undefined,
       isPop: false
     }
   }
-  componentWillMount(){
+  componentWillMount() {
     firebase.auth().onAuthStateChanged((user)=>{
       if (user) {
         this.setState({user:user});
-      }else{
+      } else {
         this.setState({user:undefined});
       }
     });
   }
-  popProfile(){
+  popProfile() {
     this.setState({isPop:!this.state.isPop})
   }
-  render(){
+  render() {
     let user = this.state.user;
-    if(user){
+    if(user) {
       return(
           <span>
             <div className="profile_name">
@@ -39,7 +38,7 @@ class Profile extends Component{
             <PopCard isPop={this.state.isPop}/>
           </span>
       )
-    }else{
+    } else {
       return (<div className="profile_name"><Link to="/login">로그인</Link></div>)
     }
   }

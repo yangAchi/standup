@@ -1,11 +1,10 @@
-/*global firebaseui,firebase*/
 import React, { Component } from 'react';
 import './Editor.css';
 
 import Card from './Card';
 import getEmbedly from './EmbedlyDao';
 import firebase from 'firebase';
-import Tags from './tags';
+import Tags from './Tags';
 import Dropdown from 'react-drop-down';
 import AddCategory from './AddCategory';
 import FirebaseDao from './FirebaseDao'
@@ -39,7 +38,7 @@ class Editor extends Component {
   }
 
   componentWillMount() {
-    this.dao.list2(50).on('value',(dataSnapshots)=>{
+    this.dao.listCategory(50).on('value',(dataSnapshots)=>{
       var items = [];
       dataSnapshots.forEach(function(dataSnapshot){
         var item = dataSnapshot.val();

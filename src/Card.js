@@ -19,7 +19,7 @@ export default class Card extends Component {
           </div>
         </a>
       )
-    }else{
+    } else {
       return null;
     }
   }

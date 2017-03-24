@@ -1,15 +1,16 @@
-import React ,{Component} from 'react';
-import {searchArticles} from './actions/Article';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { searchArticles } from './actions/Article';
+import { connect } from 'react-redux';
 import Dropdown from 'react-drop-down';
 import FirebaseDao from './FirebaseDao'
 import config from './config'
-import { slide as Menu } from 'react-burger-menu'
+import { push as Menu } from 'react-burger-menu'
 import './BurgerMenu.css';
+import burgerIcon from './img/burgerIcon.png';
 
 let Items=[];
 
-class SearchCategory extends Component{
+class SearchCategory extends Component {
   constructor(){
     super();
     this.state={
@@ -21,7 +22,7 @@ class SearchCategory extends Component{
   }
 
   componentWillMount() {
-    this.dao.list2(50).on('value',(dataSnapshots)=>{
+    this.dao.listCategory(50).on('value',(dataSnapshots)=>{
       var items = [];
       dataSnapshots.forEach(function(dataSnapshot){
         var item = dataSnapshot.val();
@@ -33,12 +34,13 @@ class SearchCategory extends Component{
       this.submitItems(items);
     });
   }
-  componentWillUnmount(){
+
+  componentWillUnmount() {
     this.dao.off();
   }
 
   //AddCategory.js
-  submitItems(categoryItems){
+  submitItems(categoryItems) {
     Items=categoryItems;
     this.forceUpdate();  //re-rendering?
   }
@@ -47,12 +49,13 @@ class SearchCategory extends Component{
     this.setState({value: e});
     const {dispatch} = this.props;
     dispatch(searchArticles(e));
+    <Menu isOpen={ false }/>;
   }
 
-  render(){
+  render() {
     return(
       <div className="searchCategory">
-        <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }> 
+        <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } customBurgerIcon={ <img src={burgerIcon} /> } noOverlay>
             <a onClick={()=>this.handleChange(Items[0])}>{Items[0]}</a>
             <a onClick={()=>this.handleChange(Items[1])}>{Items[1]}</a>
             <a onClick={()=>this.handleChange(Items[2])}>{Items[2]}</a>

@@ -1,12 +1,10 @@
-/*global firebase*/
-import React ,{Component} from 'react';
-// import './PopCard.css';
-import {tagArticles} from './actions/Article';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { tagArticles } from './actions/Article';
+import { connect } from 'react-redux';
 import './Search.css'
 
-class Search extends Component{
-  constructor(props){
+class Search extends Component {
+  constructor(props) {
     super(props);
     this.state={
       tag : undefined
@@ -20,7 +18,7 @@ class Search extends Component{
     this.refs.myText.textContent = "";
   }
 
-  render(){
+  render() {
     return(
       <div className="tagEdit">
         <div className="innerTagEdit"
@@ -35,4 +33,5 @@ class Search extends Component{
       );
   }
 }
+
 export default connect()(Search)

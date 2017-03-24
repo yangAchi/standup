@@ -1,4 +1,4 @@
-import { USER,ALL,TAGS,CATEGORY} from '../constants'
+import { USER, ALL, TAGS, CATEGORY } from '../constants'
 import FirebaseDao from '../FirebaseDao'
 import config from '../config'
 const dao = new FirebaseDao(config);

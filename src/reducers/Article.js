@@ -1,5 +1,4 @@
-/*global firebaseui,firebase*/
-import {USER,TAGS,CATEGORY} from '../constants';
+import { USER, TAGS, CATEGORY } from '../constants';
 import firebase from 'firebase';
 export default function getArticles(state,action){
 

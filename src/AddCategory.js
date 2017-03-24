@@ -1,5 +1,5 @@
-import React ,{Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './AddCategory.css'
 import FirebaseDao from './FirebaseDao'
 import config from './config'
@@ -19,7 +19,7 @@ class AddCategory extends Component{
     categoryItem = this.refs.myText.textContent;
     if(categoryItem){
           let key = this.dao.newKey();
-          this.dao.update2( key, categoryItem);
+          this.dao.updateCategory( key, categoryItem);
     }
     this.refs.myText.textContent = "";
     this.forceUpdate();  //re-rendering?

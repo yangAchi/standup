@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Card from './Card'
 import './CardList.css'
-import {connect} from 'react-redux'
-import {loadArticles,tagArticles} from './actions/Article'
-
+import { connect } from 'react-redux'
+import { loadArticles, tagArticles } from './actions/Article'
 
 class CardList extends Component {
 

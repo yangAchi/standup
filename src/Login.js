@@ -1,10 +1,8 @@
-﻿//lobal firebaseui,firebase*/
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import FirebaseDao from './FirebaseDao';
 import config from './config';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
-//import firebaseui from 'firebaseui';
 
 class Login extends Component {
   constructor(props){
