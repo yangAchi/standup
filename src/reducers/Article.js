@@ -3,7 +3,7 @@ import firebase from 'firebase';
 export default function getArticles(state,action){
 
   if(action.type === USER){
-    console.log("USER Reducer");
+    // console.log("USER Reducer");
     let articles_of_mine = [];
     let cUser = firebase.auth().currentUser;
 
@@ -12,11 +12,11 @@ export default function getArticles(state,action){
         articles_of_mine.push(article);
       }
     });
-    console.log(articles_of_mine);
+    // console.log(articles_of_mine);
     return Object.assign({},state,{articles:articles_of_mine});
   }
   else if(action.type === TAGS){
-    console.log("TAGS Reducer");
+    // console.log("TAGS Reducer");
     let articles_of_tag = [];
     // let cUser = firebase.auth().currentUser;
     action.articles.forEach(function(article){
@@ -29,11 +29,11 @@ export default function getArticles(state,action){
       });
       }
     });
-    console.log(articles_of_tag);
+    // console.log(articles_of_tag);
     return Object.assign({},state,{articles:articles_of_tag});
   }
   else if(action.type === CATEGORY){
-    console.log("CATEGORY Reducer");
+    // console.log("CATEGORY Reducer");
     let articles_of_category = [];
 
     action.articles.forEach(function(article){
@@ -43,10 +43,10 @@ export default function getArticles(state,action){
       }
 
     });
-    console.log(articles_of_category);
+    // console.log(articles_of_category);
     return Object.assign({},state,{articles:articles_of_category});
   }
-  console.log("ALL Reducer");
-  console.log(action);
+  // console.log("ALL Reducer");
+  // console.log(action);
   return Object.assign({},state,action);
 }

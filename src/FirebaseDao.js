@@ -10,7 +10,7 @@ export default class FirebaseDao {
       this.firebaseApp = firebase.apps[0];
     } else {
       this.firebaseApp = firebase.initializeApp(config);
-      console.log(config.fcmServerKey);
+      // console.log(config.fcmServerKey);
       this.fcm = new fcmpush(config.fcmServerKey);
     }
     this.sendPushNotification = this.sendPushNotification.bind(this);
@@ -51,8 +51,8 @@ export default class FirebaseDao {
 
   // 카테고리를 위한 저장소
   updateCategory(key,postData){
-    console.log("update");
-    console.log(postData);
+    // console.log("update");
+    // console.log(postData);
     var updates = {};
     updates['/category/' + key] = postData;
     return firebase.database().ref().update(updates);
@@ -73,7 +73,7 @@ export default class FirebaseDao {
   newKey(){
     return firebase.database().ref().child('posts').push().key;
   }
-  
+
   /**
   * Promise를 호출하게 되면 이벤트가 등록된 부분이 사라기제 된다.
   */

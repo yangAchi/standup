@@ -42,7 +42,7 @@ class Editor extends Component {
       var items = [];
       dataSnapshots.forEach(function(dataSnapshot){
         var item = dataSnapshot.val();
-        console.log(dataSnapshot.val());
+        // console.log(dataSnapshot.val());
         items.push(item);
       })
       items.reverse();
@@ -89,11 +89,11 @@ class Editor extends Component {
           content : content
         });
       }
-      console.log("getForcedState");
+      // console.log("getForcedState");
     })
   }
   onPaste(event){
-    console.log("onPaste");
+    // console.log("onPaste");
     event.clipboardData.items[0].getAsString(text=>{
       let checkText = this.detectURL(text);
       if(checkText){
@@ -141,7 +141,7 @@ class Editor extends Component {
     else return false;
   }
   handleSubmit(e){
-    console.log("handleSubmit");
+    // console.log("handleSubmit");
     e.preventDefault();
     this.props.submit(this.getArticle());
 

@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-
+import { Router } from 'react-router'
 
 export default class NotFound extends Component {
-  render(){
-    return(
-      <div>Not Found!</div>
-    )
+  constructor(props){
+    super(props);
+    Router.browserHistory.push('/');
   }
 }

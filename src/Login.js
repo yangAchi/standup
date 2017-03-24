@@ -3,12 +3,14 @@ import FirebaseDao from './FirebaseDao';
 import config from './config';
 import { connect } from 'react-redux';
 import firebase from 'firebase';
+import { Router } from 'react-router';
 
 class Login extends Component {
   constructor(props){
     super(props);
     this.ui = (new FirebaseDao(config)).getUI();
   }
+
   componentDidMount() {
     var uiConfig = {
       'signInSuccessUrl' : window.location.origin,
@@ -18,9 +20,11 @@ class Login extends Component {
     };
     this.ui.start('#firebaseui-auth', uiConfig);
   }
+
   componentWillUnmount() {
     this.ui.reset();
   }
+
   render() {
     return (
       <div id="firebaseui-auth"></div>

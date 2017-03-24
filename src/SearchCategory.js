@@ -26,7 +26,7 @@ class SearchCategory extends Component {
       var items = [];
       dataSnapshots.forEach(function(dataSnapshot){
         var item = dataSnapshot.val();
-        console.log(dataSnapshot.val());
+        // console.log(dataSnapshot.val());
         items.push(item);
       })
       items.reverse();

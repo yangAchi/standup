@@ -41,14 +41,14 @@ export function getArticles(articles,action){
 
   if(items && items.length>0){
     if(action && action.type === USER) {
-      console.log(items);
+      // console.log(items);
       return{
         type : USER,
         articles : items.reverse()
       }
     }
     else if(action && action.type === TAGS) {
-      console.log(items);
+      // console.log(items);
       return{
         type : TAGS,
         tag : action.tag,
@@ -56,14 +56,14 @@ export function getArticles(articles,action){
       }
     }
     else if(action && action.type===CATEGORY){
-    console.log(items);
+    // console.log(items);
     return{
       type:CATEGORY,
       category: action.category,
       articles : items.reverse()
     }
   }
-    console.log("ALL action");
+    // console.log("ALL action");
     return{
       type : ALL,
       articles : items.reverse()
