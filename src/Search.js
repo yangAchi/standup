@@ -27,7 +27,7 @@ class Search extends Component {
               ref="myText"></div>
         <button className="tagButton"
           onClick={this.serchTag}>
-          <span>태그 검색</span>
+          <span>검색</span>
         </button>
       </div>
       );

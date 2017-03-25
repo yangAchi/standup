@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { searchArticles } from './actions/Article';
 import { connect } from 'react-redux';
-import Dropdown from 'react-drop-down';
 import FirebaseDao from './FirebaseDao'
 import config from './config'
 import { push as Menu } from 'react-burger-menu'
@@ -49,14 +48,14 @@ class SearchCategory extends Component {
     this.setState({value: e});
     const {dispatch} = this.props;
     dispatch(searchArticles(e));
-    <Menu isOpen={ false }/>;
+    // <Menu isOpen={ false }/>;
   }
 
   render() {
     return(
       <div className="searchCategory">
-        <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } customBurgerIcon={ <img src={burgerIcon} /> } noOverlay>
-            <a onClick={()=>this.handleChange(Items[0])}>{Items[0]}</a>
+        <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } customBurgerIcon={ <img src={burgerIcon} alt="burger"/> } noOverlay>
+            <a href="#" onClick={()=>this.handleChange(Items[0])}>{Items[0]}</a>
             <a onClick={()=>this.handleChange(Items[1])}>{Items[1]}</a>
             <a onClick={()=>this.handleChange(Items[2])}>{Items[2]}</a>
             <a onClick={()=>this.handleChange(Items[3])}>{Items[3]}</a>

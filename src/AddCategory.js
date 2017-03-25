@@ -4,8 +4,6 @@ import './AddCategory.css'
 import FirebaseDao from './FirebaseDao'
 import config from './config'
 
-var Items=[];
-
 class AddCategory extends Component{
   constructor(){
     super();

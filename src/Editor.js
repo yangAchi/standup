@@ -144,7 +144,6 @@ class Editor extends Component {
     // console.log("handleSubmit");
     e.preventDefault();
     this.props.submit(this.getArticle());
-
     this.refs.innerText.textContent = "";
   }
   detectURL(text){
