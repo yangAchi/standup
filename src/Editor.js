@@ -145,6 +145,7 @@ class Editor extends Component {
     e.preventDefault();
     this.props.submit(this.getArticle());
     this.refs.innerText.textContent = "";
+    this.setState({cardInfo:undefined});
   }
   detectURL(text){
     var urls = text.match(/(https?:\/\/[^\s]+)/g)||text.match(/(www.[^\s]+)/g);
@@ -193,7 +194,7 @@ class Editor extends Component {
             onPaste={this.onPaste}
             onKeyUp={this.editorChange}
             ref="innerText"
-            // dangerouslySetInnerHTML={{__html: this.state.content}}
+            //dangerouslySetInnerHTML={{__html: this.state.content}}
             ></div>
             <Card cardInfo={this.state.cardInfo}/>
         </div>
