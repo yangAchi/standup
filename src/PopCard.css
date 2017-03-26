@@ -1,11 +1,15 @@
 .card_pop{
   position:absolute;
   border: 1px solid #AAA;
-  /*top :115px;*/
+  top :50px;
   right:20px;
-  padding: 10px;
+  padding: 5px;
   background-color: white;
   box-shadow: 3px -2px 4px #AAA;
+  line-height: initial;
+  /*font-weight: bold;*/
+  font-style: italic;
+  width: 110px;
 }
 .card_pop_arrow {
 	position: absolute;

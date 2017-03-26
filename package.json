@@ -2,7 +2,7 @@
   "name": "stadnup",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://bibim.org",
+  "homepage": "http://whole-heat.surge.sh",
   "devDependencies": {
     "gh-pages": "^0.12.0",
     "react-scripts": "0.8.5"
@@ -33,6 +33,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && surge -p build --domain bibim.org"
+    "deploy": "npm run build && surge -p build --domain whole-heat.surge.sh"
   }
 }

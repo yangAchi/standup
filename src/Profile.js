@@ -28,7 +28,7 @@ class Profile extends Component {
     let user = this.state.user;
     if(user) {
       return(
-          <span>
+          <span className="profiles">
             <div className="profile_name">
               <a href="#" className="profile_name_color" onClick={()=>this.popProfile()}>{user.displayName}</a>
             </div>

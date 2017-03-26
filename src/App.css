@@ -4,6 +4,8 @@
 }
 
 .App-logo {
+  max-width: 179px;
+  width: 30%;
   height: 35px;
   vertical-align: -webkit-baseline-middle;
 }
