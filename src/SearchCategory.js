@@ -55,7 +55,7 @@ class SearchCategory extends Component {
     return(
       <div className="searchCategory">
         <Menu pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" } customBurgerIcon={ <img src={burgerIcon} alt="burger"/> } noOverlay>
-            <a href="#" onClick={()=>this.handleChange(Items[0])}>{Items[0]}</a>
+            <a onClick={()=>this.handleChange(Items[0])}>{Items[0]}</a>
             <a onClick={()=>this.handleChange(Items[1])}>{Items[1]}</a>
             <a onClick={()=>this.handleChange(Items[2])}>{Items[2]}</a>
             <a onClick={()=>this.handleChange(Items[3])}>{Items[3]}</a>

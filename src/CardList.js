@@ -29,10 +29,14 @@ class CardList extends Component {
       categoryItem="["+item.value+"]";
     }
 
+    var date="";
+    if(item.date){
+      date=item.date;
+    }
 
     return(<li className="list_row" key={item.key}>
               <ul>
-                {categoryItem}
+                {categoryItem}     {date}
               </ul>
               <div className="common_margin">
               <pre className="common_margin grey_text card_content">{item.content}</pre>

@@ -11,6 +11,11 @@ import FirebaseDao from './FirebaseDao'
 import config from './config'
 
 let Items=[];
+let d=new Date();
+//let d=new Date();
+//console.log(d.getFullYear()+"."+(d.getMonth() + 1)+"."+d.getDate());
+// console.log((d.getMonth() + 1));
+// console.log(d.getDate());
 
 class Editor extends Component {
   constructor(props){
@@ -30,7 +35,8 @@ class Editor extends Component {
       content : undefined,
       cardInfo : undefined,
       tags : [],
-      value:'untitled'
+      value:'untitled',
+      date :d.getFullYear()+"."+(d.getMonth() + 1)+"."+d.getDate()+" "+d.getHours()+"/"+d.getMinutes()+"/"+d.getSeconds()
     };
 
     this.submitItems = this.submitItems.bind(this);
@@ -133,6 +139,7 @@ class Editor extends Component {
     }
     article.tags = this.state.tags;
     article.value = this.state.value;
+    article.date=this.state.date;
     return article;
   }
   hasValue(value){
@@ -141,11 +148,14 @@ class Editor extends Component {
     else return false;
   }
   handleSubmit(e){
+    let d2=new Date();
+    this.setState({date: d2.getFullYear()+"."+(d2.getMonth() + 1)+"."+d2.getDate()+" "+d2.getHours()+"/"+d2.getMinutes()+"/"+d2.getSeconds()});
     // console.log("handleSubmit");
     e.preventDefault();
     this.props.submit(this.getArticle());
     this.refs.innerText.textContent = "";
-    this.setState({cardInfo:undefined});
+
+    //this.setState({cardInfo:undefined});
   }
   detectURL(text){
     var urls = text.match(/(https?:\/\/[^\s]+)/g)||text.match(/(www.[^\s]+)/g);
