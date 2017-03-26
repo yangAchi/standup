@@ -74,20 +74,22 @@ class Editor extends Component {
       if(embedlyUrl){
         getEmbedly(embedlyUrl).then((response)=>{
           let category=this.state.value;
+          let date=this.state.date;
           let cardInfo = Object.assign({},response.data);
           resolve({
             embedlyUrl : embedlyUrl,
             content : content,
             cardInfo : cardInfo,
-            category : category
-
+            category : category,
+            date : date
           });
         }).catch((error)=>{
           resolve({
             embedlyUrl : undefined,
             content : undefined,
             cardInfo : undefined,
-            category : undefined
+            category : undefined,
+            date : undefined
           });
         });
       }else{
@@ -154,8 +156,7 @@ class Editor extends Component {
     e.preventDefault();
     this.props.submit(this.getArticle());
     this.refs.innerText.textContent = "";
-
-    //this.setState({cardInfo:undefined});
+    this.setState({cardInfo:""});
   }
   detectURL(text){
     var urls = text.match(/(https?:\/\/[^\s]+)/g)||text.match(/(www.[^\s]+)/g);
