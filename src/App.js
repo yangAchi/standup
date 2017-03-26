@@ -30,26 +30,19 @@ class App extends Component {
       this.forceUpdate();
     }
   }
-  // componentWillUpdate() {
-  //   console.log("App componentWillUpdate");
-  //   const {dispatch} = this.props;
-  //   dispatch(loadArticles());
-  // }
+
   render() {
     return (
-
       <div className="App" id="outer-container">
         <SearchCategory />
         <div id="page-wrap">
           <div className="App-header">
-              <div className="Category">
-                </div>
-                <Link to="/" className="App-logo-link">
-                  <img src={logo} className="App-logo" alt="logo" />
-                </Link>
-                <Profile/>
-              </div>
-            <Search />
+            <Link to="/" className="App-logo-link">
+              <img src={logo} className="App-logo" alt="logo" />
+            </Link>
+            <Profile/>
+          </div>
+          <Search />
           <Editor submit={this.submit}/>
           {this.props.children}
         </div>
